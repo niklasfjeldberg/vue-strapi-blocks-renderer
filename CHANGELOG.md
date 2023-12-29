@@ -1,6 +1,19 @@
 # Changelog
 
 
+## v0.0.5
+
+[compare changes](https://github.com/niklasfjeldberg/nuxt-multi-tracker/compare/v0.0.4...v0.0.5)
+
+### 🩹 Fixes
+
+- Remove comments ([48f296f](https://github.com/niklasfjeldberg/nuxt-multi-tracker/commit/48f296f))
+- Package ([b5a683e](https://github.com/niklasfjeldberg/nuxt-multi-tracker/commit/b5a683e))
+
+### ❤️ Contributors
+
+- Niklas Fjeldberg <github@fjeldberg.me>
+
 ## v0.0.4
 
 [compare changes](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/compare/v0.0.2...v0.0.4)
