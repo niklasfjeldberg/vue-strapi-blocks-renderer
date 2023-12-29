@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.0.7
+
+[compare changes](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/compare/v0.0.6...v0.0.7)
+
+### 🩹 Fixes
+
+- Package rep url ([9e6f014](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/9e6f014))
+
+### ❤️ Contributors
+
+- Niklas Fjeldberg <github@fjeldberg.me>
+
 ## v0.0.6
 
 [compare changes](https://github.com/niklasfjeldberg/nuxt-multi-tracker/compare/v0.0.5...v0.0.6)
