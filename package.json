@@ -1,20 +1,47 @@
 {
   "name": "vue-strapi-blocks-renderer",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.2",
   "type": "module",
+  "files": [
+    "src/composables"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/types.d.ts",
+      "import": "./dist/module.mjs",
+      "require": "./dist/module.cjs"
+    }
+  },
+  "main": "./dist/module.cjs",
+  "types": "./dist/types.d.ts",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "build": "vite build",
+    "build2": "vue-tsc && vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "release2": "npm run lint && npm run test && changelogen --release && npm publish && git push --follow-tags",
+    "release": "changelogen --release && npm publish && git push --follow-tags"
   },
   "dependencies": {
     "vue": "^3.3.11"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.2",
+    "changelogen": "^0.5.5",
+    "eslint": "^8.56.0",
+    "prettier": "^3.1.1",
     "typescript": "^5.2.2",
     "vite": "^5.0.8",
+    "vitest": "^1.1.0",
     "vue-tsc": "^1.8.25"
-  }
+  },
+  "keywords": [
+    "strapi",
+    "blocks",
+    "renderer",
+    "vue"
+  ]
 }
