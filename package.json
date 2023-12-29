@@ -4,7 +4,8 @@
   "version": "0.0.3",
   "type": "module",
   "files": [
-    "src/composables"
+    "src/composables",
+    "index.ts"
   ],
   "exports": {
     ".": {
