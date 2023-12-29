@@ -2,20 +2,14 @@
   "name": "vue-strapi-blocks-renderer",
   "private": false,
   "version": "0.0.4",
+  "description": "A Vue renderer for the Strapi's Blocks rich text editor.",
+  "repository": "https://github.com/niklasfjeldberg/nuxt-multi-tracker",
+  "license": "MIT",
   "type": "module",
   "files": [
     "src/composables",
     "index.ts"
   ],
-  "exports": {
-    ".": {
-      "types": "./dist/types.d.ts",
-      "import": "./dist/module.mjs",
-      "require": "./dist/module.cjs"
-    }
-  },
-  "main": "./dist/module.cjs",
-  "types": "./dist/types.d.ts",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
