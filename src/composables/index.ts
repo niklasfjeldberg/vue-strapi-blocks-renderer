@@ -1,5 +1,6 @@
-import { BlocksRenderer } from './blocksRenderer';
-export { BlocksRenderer as useStrapiBlocks };
-
-import type { RootNode } from '../types';
-export type BlocksContent = RootNode[];
+export { BlocksRenderer as useStrapiBlocks } from './blocksRenderer';
+export type {
+  BlocksComponents,
+  ModifiersComponents,
+  BlocksContent,
+} from '../types';
