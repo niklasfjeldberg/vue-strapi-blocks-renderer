@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import data from './data/data.json';
+import data from '../data/data.json';
 import {
   useStrapiBlocks as StrapiBlocks,
   type BlocksContent,

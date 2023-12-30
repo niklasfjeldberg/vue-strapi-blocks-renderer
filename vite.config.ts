@@ -6,9 +6,13 @@ import { name } from './package.json';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
+  test: {
+    globals: true,
+    environment: 'happy-dom',
+  },
   build: {
     lib: {
-      entry: resolve(__dirname, './lib/index.ts'),
+      entry: resolve(__dirname, 'lib/index.ts'),
       name: name,
       fileName: name,
     },
