@@ -6,6 +6,7 @@
   "repository": "https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer",
   "license": "MIT",
   "type": "module",
+  "main": "index.ts",
   "files": [
     "src/composables",
     "index.ts"
