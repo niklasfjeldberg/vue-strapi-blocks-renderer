@@ -1,8 +1,15 @@
 # Vue Strapi Blocks Renderer
 
+[![npm version][npm-version-src]][npm-version-href]
+[![npm downloads][npm-downloads-src]][npm-downloads-href]
+[![License][license-src]][license-href]
+
 Easily render the content of Strapi's new Blocks rich text editor in your Vue frontend.
 
 Based on [@strapi/blocks-react-renderer](https://github.com/strapi/blocks-react-renderer)
+
+- ✨ [Release Notes](/CHANGELOG.md)
+- 🏀 [Online playground](https://stackblitz.com/github/niklasfjeldberg/vue-strapi-blocks-renderer?file=src%2FApp.vue)
 
 ## Installation
 
@@ -50,3 +57,12 @@ import { useStrapiBlocks as StrapiBlocks } from 'strapi-blocks-vue-renderer';
   <StrapiBlocks :content="content" :modifiers="modifiers" :blocks="blocks" />
 </template>
 ```
+
+<!-- Badges -->
+
+[npm-version-src]: https://img.shields.io/npm/v/vue-strapi-blocks-renderer/latest.svg?style=flat&colorA=18181B&colorB=28CF8D
+[npm-version-href]: https://npmjs.com/package/vue-strapi-blocks-renderer
+[npm-downloads-src]: https://img.shields.io/npm/dm/vue-strapi-blocks-renderer.svg?style=flat&colorA=18181B&colorB=28CF8D
+[npm-downloads-href]: https://npmjs.com/package/vue-strapi-blocks-renderer
+[license-src]: https://img.shields.io/npm/l/vue-strapi-blocks-renderer.svg?style=flat&colorA=18181B&colorB=28CF8D
+[license-href]: https://npmjs.com/package/vue-strapi-blocks-renderer
