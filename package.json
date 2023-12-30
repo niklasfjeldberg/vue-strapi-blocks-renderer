@@ -25,23 +25,26 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
+    "prettier": "prettier . --write",
     "lint": "eslint .",
     "test": "vitest run",
-    "release": "npm run test && npm run build && changelogen --release && npm publish && git push --follow-tags",
+    "release": "npm run lint && npm run test && npm run build && changelogen --release && npm publish && git push --follow-tags",
     "releaseBeta": "changelogen --release && npm publish --tag beta && git push --follow-tags",
-    "build2": "vue-tsc && vite build",
-    "release2": "npm run lint && npm run test && changelogen --release && npm publish && git push --follow-tags"
+    "build2": "vue-tsc && vite build"
   },
   "peerDependencies": {
     "typescript": "latest",
     "vue": "latest"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.5.2",
+    "@vitejs/plugin-vue": "^5.0.1",
     "@vue/test-utils": "^2.4.3",
     "changelogen": "^0.5.5",
     "eslint": "^8.56.0",
-    "happy-dom": "^6.0.4",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.1.2",
+    "eslint-plugin-vue": "^9.19.2",
+    "happy-dom": "^12.10.3",
     "prettier": "^3.1.1",
     "typescript": "^5.2.2",
     "vite": "^5.0.8",
