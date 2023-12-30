@@ -92,7 +92,11 @@
     },
     {
       "type": "paragraph",
-      "children": [{ "code": true, "text": "Code block", "type": "text" }]
+      "children": [{ "code": true, "text": "Code string", "type": "text" }]
+    },
+    {
+      "type": "code",
+      "children": [{ "text": "Code block", "type": "text" }]
     },
     {
       "type": "list",
