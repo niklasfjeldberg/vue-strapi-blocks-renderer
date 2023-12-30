@@ -1,6 +1,6 @@
 <template>
   <div class="mx-auto max-w-[800px] border-2">
-    <StrapiBlocks :content="data.text" />
+    <StrapiBlocks :content="data" />
   </div>
 </template>
 
