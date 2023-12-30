@@ -127,8 +127,10 @@ export interface ComponentsContextValue {
   missingModifierTypes: string[];
 }
 
+export type BlocksContent = RootNode[];
+
 export interface BlocksRendererProps {
-  content: RootNode[];
+  content: BlocksContent;
   blocks?: Partial<BlocksComponents>;
   modifiers?: Partial<ModifiersComponents>;
 }
