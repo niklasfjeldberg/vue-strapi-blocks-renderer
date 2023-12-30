@@ -3,10 +3,10 @@ import type {
   StrapiNode,
   ComponentsContextValue,
   GetPropsFromNode,
-} from '../types';
+} from './types';
 
 import { Text } from './text';
-import { name } from '../../package.json';
+import { name } from '../package.json';
 
 type BlockComponentProps = GetPropsFromNode<Node>;
 

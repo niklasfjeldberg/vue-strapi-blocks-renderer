@@ -3,4 +3,4 @@ export type {
   BlocksComponents,
   ModifiersComponents,
   BlocksContent,
-} from '../types';
+} from './types';

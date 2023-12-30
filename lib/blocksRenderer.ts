@@ -7,7 +7,7 @@ import type {
   BlocksRendererProps,
   BlocksComponents,
   ModifiersComponents,
-} from '../types';
+} from './types';
 
 export const defaultComponents: ComponentsContextValue = {
   blocks: {

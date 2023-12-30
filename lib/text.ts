@@ -2,9 +2,9 @@ import type {
   TextInlineProps,
   Modifier,
   ComponentsContextValue,
-} from '../types';
+} from './types';
 
-import { name } from '../../package.json';
+import { name } from '../package.json';
 
 interface TextType extends TextInlineProps {
   componentsContext: ComponentsContextValue;
