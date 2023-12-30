@@ -1,6 +1,26 @@
 # Changelog
 
 
+## v0.0.10
+
+[compare changes](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/compare/v0.0.9...v0.0.10)
+
+### 🩹 Fixes
+
+- Code block and string correct format ([2fa4513](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/2fa4513))
+
+### 📖 Documentation
+
+- Badges + playground ([aad4892](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/aad4892))
+
+### ✅ Tests
+
+- Added code block to test data ([d9d568a](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/d9d568a))
+
+### ❤️ Contributors
+
+- Niklas Fjeldberg <github@fjeldberg.me>
+
 ## v0.0.9
 
 [compare changes](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/compare/v0.0.8...v0.0.9)
