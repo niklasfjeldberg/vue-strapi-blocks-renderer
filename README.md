@@ -3,6 +3,7 @@
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![License][license-src]][license-href]
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
 
 Easily render the content of Strapi's new Blocks rich text editor in your Vue frontend.
 
@@ -56,6 +57,53 @@ import { useStrapiBlocks as StrapiBlocks } from 'strapi-blocks-vue-renderer';
 <template>
   <StrapiBlocks :content="content" :modifiers="modifiers" :blocks="blocks" />
 </template>
+```
+
+## Custom components
+
+You can provide your own Vue components to the renderer, both for blocks and modifier. They will be merged with the default components, so you can override only the ones you need.
+
+- Blocks are full-width elements, usually at the root of the content. The available options are:
+  - paragraph
+  - heading (receives level)
+  - list (receives format)
+  - quote
+  - code (receives plainText)
+  - image (receives image)
+  - link (receives url)
+- Modifiers are inline elements, used to change the appearance of fragments of text within a block. The available options are:
+  - bold
+  - italic
+  - underline
+  - strikethrough
+  - code
+
+To provide your own components, pass an object to the blocks and modifiers props of the renderer. For each type, the value should be a React component that will receive the props of the block or modifier. Make sure to always render the children, so that the nested blocks and modifiers are rendered as well.
+
+```ts
+import { h } from 'vue';
+
+import {
+  useStrapiBlocks,
+  type BlocksComponents,
+  type ModifiersComponents,
+} from 'strapi-blocks-vue-renderer';
+
+const userBlocks: BlocksComponents = {
+  // Will include the class "mb-4" on all paragraphs
+  paragraph: (props) => h('p', { class: 'mb-4' }, props.children),
+};
+
+const userModifier: ModifiersComponents = {
+  // Will include the class "text-red" on all bold text
+  bold: (props) => h('strong', { class: 'text-red' }, props.children),
+};
+
+const VNode = useStrapiBlocks({
+  content: content,
+  modifier: userModifier,
+  blocks: userBlocks,
+});
 ```
 
 <!-- Badges -->
