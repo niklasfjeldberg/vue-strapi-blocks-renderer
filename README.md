@@ -16,7 +16,7 @@ Based on [@strapi/blocks-react-renderer](https://github.com/strapi/blocks-react-
 Install the Blocks renderer and its peer dependencies:
 
 ```sh
-npm install strapi-blocks-vue-renderer vue
+npm install vue-strapi-blocks-renderer vue
 ```
 
 ## Basic usage
