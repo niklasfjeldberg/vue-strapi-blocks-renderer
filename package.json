@@ -33,7 +33,8 @@
     "release2": "npm run lint && npm run test && changelogen --release && npm publish && git push --follow-tags"
   },
   "peerDependencies": {
-    "vue": "latest"
+    "vue": "latest",
+    "typescript": "latest"
   },
   "dependencies": {},
   "devDependencies": {
