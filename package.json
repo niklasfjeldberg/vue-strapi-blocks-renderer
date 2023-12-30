@@ -1,16 +1,26 @@
 {
   "name": "vue-strapi-blocks-renderer",
   "private": false,
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "A Vue renderer for the Strapi's Blocks rich text editor. Compatible with Nuxt.",
   "repository": "https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer",
+  "homepage": "https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer#readme",
+  "bugs": {
+    "url": "https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/issues"
+  },
   "license": "MIT",
   "type": "module",
-  "main": "./src/composables/index.ts",
-  "types": "./src/types/index.ts",
   "files": [
-    "./src/composables"
+    "dist"
   ],
+  "main": "./dist/vue-strapi-blocks-renderer.umd.cjs",
+  "module": "./dist/vue-strapi-blocks-renderer.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vue-strapi-blocks-renderer.js",
+      "require": "./dist/vue-strapi-blocks-renderer.umd.cjs"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -18,6 +28,7 @@
     "lint": "eslint .",
     "test": "vitest run",
     "release": "changelogen --release && npm publish && git push --follow-tags",
+    "releaseBeta": "changelogen --release && npm publish --tag beta && git push --follow-tags",
     "build2": "vue-tsc && vite build",
     "release2": "npm run lint && npm run test && changelogen --release && npm publish && git push --follow-tags"
   },
