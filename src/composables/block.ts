@@ -72,8 +72,6 @@ export const Block = ({ content, componentsContext }: BlockProps) => {
 
   const augmentedProps = augmentProps(content);
 
-  console.log(content);
-
   const theChildren: any = childrenNodes.map((childNode) => {
     if (childNode.type === 'text') {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars

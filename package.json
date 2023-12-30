@@ -6,25 +6,26 @@
   "repository": "https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer",
   "license": "MIT",
   "type": "module",
-  "main": "index.ts",
+  "main": "./src/composables/index.ts",
   "files": [
-    "src/composables",
-    "index.ts"
+    "./src/composables"
   ],
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "build2": "vue-tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint .",
     "test": "vitest run",
-    "release2": "npm run lint && npm run test && changelogen --release && npm publish && git push --follow-tags",
-    "release": "changelogen --release && npm publish && git push --follow-tags"
+    "release": "changelogen --release && npm publish && git push --follow-tags",
+    "build2": "vue-tsc && vite build",
+    "release2": "npm run lint && npm run test && changelogen --release && npm publish && git push --follow-tags"
   },
-  "dependencies": {
-    "vue": "^3.3.11"
+  "peerDependencies": {
+    "vue": "latest"
   },
+  "dependencies": {},
   "devDependencies": {
+    "vue": "latest",
     "@vitejs/plugin-vue": "^4.5.2",
     "changelogen": "^0.5.5",
     "eslint": "^8.56.0",
