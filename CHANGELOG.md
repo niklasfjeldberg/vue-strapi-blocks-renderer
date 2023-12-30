@@ -1,6 +1,30 @@
 # Changelog
 
 
+## v0.0.11
+
+[compare changes](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/compare/v0.0.10...v0.0.11)
+
+### 🚀 Enhancements
+
+- Export more types ([9d13e7c](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/9d13e7c))
+
+### 🩹 Fixes
+
+- Simplify test data structure ([e610628](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/e610628))
+- Types location ([1828923](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/1828923))
+- Wrong content type ([4a56e19](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/4a56e19))
+- Imporove types ([3f343cc](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/3f343cc))
+
+### 📖 Documentation
+
+- Correct name for install ([7aa2eb5](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/7aa2eb5))
+- Custom components ([a5041cd](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/a5041cd))
+
+### ❤️ Contributors
+
+- Niklas Fjeldberg <github@fjeldberg.me>
+
 ## v0.0.10
 
 [compare changes](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/compare/v0.0.9...v0.0.10)
