@@ -1,7 +1,7 @@
 {
   "name": "vue-strapi-blocks-renderer",
   "private": false,
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "A Vue renderer for the Strapi's Blocks rich text editor.",
   "repository": "https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer",
   "license": "MIT",

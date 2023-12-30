@@ -1,6 +1,22 @@
 # Changelog
 
 
+## v0.0.9
+
+[compare changes](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/compare/v0.0.8...v0.0.9)
+
+### 🩹 Fixes
+
+- Misc ([6f4a5e1](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/6f4a5e1))
+
+### 🏡 Chore
+
+- **release:** V0.0.8 ([719fea4](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/719fea4))
+
+### ❤️ Contributors
+
+- Niklas Fjeldberg <github@fjeldberg.me>
+
 ## v0.0.8
 
 [compare changes](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/compare/v0.0.7...v0.0.8)
