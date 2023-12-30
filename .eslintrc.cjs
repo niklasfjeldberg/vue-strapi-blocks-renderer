@@ -6,9 +6,10 @@ module.exports = {
   },
   extends: [
     'eslint:recommended',
-    'plugin:vue/vue3-recommended',
-    'prettier',
-    // "plugin:prettier/recommended"
+    'plugin:vue/vue3-essential',
+    '@vue/eslint-config-typescript',
+    // 'prettier',
+    'plugin:prettier/recommended',
   ],
   plugins: ['prettier'],
   rules: {
@@ -17,8 +18,5 @@ module.exports = {
     // "vue/component-name-in-template-casing": ["error", "PascalCase"],
     // "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
     // "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off"
-  },
-  globals: {
-    _: true,
   },
 };

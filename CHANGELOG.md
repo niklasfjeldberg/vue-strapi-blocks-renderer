@@ -1,6 +1,5 @@
 # Changelog
 
-
 ## v0.0.12
 
 [compare changes](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/compare/v0.0.11...v0.0.12)
@@ -129,7 +128,6 @@
 
 ## v0.0.2
 
-
 ### 📖 Documentation
 
 - Add readme ([a98a3fe](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/a98a3fe))
@@ -137,4 +135,3 @@
 ### ❤️ Contributors
 
 - Niklas Fjeldberg <github@fjeldberg.me>
-

@@ -26,7 +26,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "prettier": "prettier . --write",
-    "lint": "eslint .",
+    "lint": "eslint --ext .ts lib src",
     "test": "vitest run",
     "release": "npm run lint && npm run test && npm run build && changelogen --release && npm publish && git push --follow-tags",
     "releaseBeta": "changelogen --release && npm publish --tag beta && git push --follow-tags",
@@ -38,6 +38,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.1",
+    "@vue/eslint-config-typescript": "^12.0.0",
     "@vue/test-utils": "^2.4.3",
     "changelogen": "^0.5.5",
     "eslint": "^8.56.0",
@@ -59,5 +60,8 @@
     "renderer",
     "nuxt",
     "vue"
-  ]
+  ],
+  "dependencies": {
+    "@rushstack/eslint-patch": "^1.6.1"
+  }
 }
