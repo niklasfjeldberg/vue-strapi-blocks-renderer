@@ -1,5 +1,25 @@
 # Changelog
 
+## v0.0.13
+
+[compare changes](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/compare/v0.0.12...v0.0.13)
+
+### 🩹 Fixes
+
+- Refactor and improve lib strcuture ([a18e930](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/a18e930))
+- Compsoable path ([cfe7905](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/cfe7905))
+- Added peerdep ([e1fc6ce](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/e1fc6ce))
+- Eslint ([c48e579](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/c48e579))
+- Eslint ([eba1553](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/eba1553))
+
+### ✅ Tests
+
+- Tests for all blocks to render ([83bf238](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/83bf238))
+
+### ❤️ Contributors
+
+- Niklas Fjeldberg <github@fjeldberg.me>
+
 ## v0.0.12
 
 [compare changes](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/compare/v0.0.11...v0.0.12)
