@@ -28,7 +28,7 @@ After fetching your Strapi content, you can use the BlocksRenderer component to 
 import {
   useStrapiBlocks,
   type BlocksContent,
-} from 'strapi-blocks-vue-renderer';
+} from 'vue-strapi-blocks-renderer';
 
 // Content should come from your Strapi API
 const content: BlocksContent = [
@@ -50,7 +50,7 @@ const VNode = useStrapiBlocks({ content: content });
 Or
 
 ```ts
-import { useStrapiBlocks as StrapiBlocks } from 'strapi-blocks-vue-renderer';
+import { useStrapiBlocks as StrapiBlocks } from 'vue-strapi-blocks-renderer';
 ```
 
 ```html
@@ -87,7 +87,7 @@ import {
   useStrapiBlocks,
   type BlocksComponents,
   type ModifiersComponents,
-} from 'strapi-blocks-vue-renderer';
+} from 'vue-strapi-blocks-renderer';
 
 const userBlocks: BlocksComponents = {
   // Will include the class "mb-4" on all paragraphs
