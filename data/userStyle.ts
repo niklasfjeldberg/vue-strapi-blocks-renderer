@@ -1,6 +1,6 @@
 import { h } from 'vue';
 
-import type { BlocksComponents, ModifiersComponents } from '../types';
+import type { BlocksComponents, ModifiersComponents } from '../lib/types';
 
 export const modifiers: ModifiersComponents = {
   bold: (props) => h('strong', {}, props.children),
