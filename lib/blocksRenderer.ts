@@ -28,8 +28,6 @@ export const defaultComponents: ComponentsContextValue = {
           return h('h5', {}, children);
         case 6:
           return h('h6', {}, children);
-        default:
-          return h('p', {}, children);
       }
     },
     'link': (props) => h('a', { href: props.url }, props.children),
@@ -70,14 +68,14 @@ export const BlocksRenderer = (props: BlocksRendererProps) => {
   };
 
   // Use refs because we can mutate them and avoid triggering re-renders
-  const missingBlockTypes = ref<string[]>([]);
-  const missingModifierTypes = ref<string[]>([]);
+  /* const missingBlockTypes = ref<string[]>([]);
+  const missingModifierTypes = ref<string[]>([]); */
 
   const componentsContext: ComponentsContextValue = {
     blocks,
     modifiers,
-    missingBlockTypes: missingBlockTypes.value,
-    missingModifierTypes: missingModifierTypes.value,
+    missingBlockTypes: [],
+    missingModifierTypes: [],
   };
 
   if (!props.content) throw new Error('BlocksRenderer content empty');
@@ -86,5 +84,13 @@ export const BlocksRenderer = (props: BlocksRendererProps) => {
     Block({ content, componentsContext }),
   );
 
-  return h('div', { class: 'strapi-blocks-wrapper' }, divs);
+  return h(
+    'div',
+    {
+      class: 'strapi-blocks-wrapper',
+      missingBlockTypes: componentsContext.missingBlockTypes,
+      missingModifierTypes: componentsContext.missingModifierTypes,
+    },
+    divs,
+  );
 };
