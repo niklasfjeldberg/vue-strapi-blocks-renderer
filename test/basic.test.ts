@@ -74,3 +74,19 @@ describe('render blocks', () => {
     );
   });
 });
+
+import dataError from '../data/data-with-error.json';
+
+const blocks2 = mount(StrapiBlocks, {
+  props: {
+    content: dataError as BlocksContent,
+  },
+});
+
+describe('render blocks', () => {
+  it('non existing block types and modifiers', () => {
+    expect(blocks2.html()).toContain(
+      '<div class="strapi-blocks-wrapper" missingblocktypes="nonExistingType1,nonExistingType2" missingmodifiertypes="nonExistingModifier1,nonExistingModifier2">',
+    );
+  });
+});

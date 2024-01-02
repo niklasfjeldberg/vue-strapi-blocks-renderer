@@ -9,6 +9,9 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'happy-dom',
+    coverage: {
+      exclude: ['data/**', 'lib/types/**', 'src/**', '.eslintrc.cjs'],
+    },
   },
   build: {
     lib: {

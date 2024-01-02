@@ -28,6 +28,7 @@
     "prettier": "prettier . --write",
     "lint": "eslint --ext .ts lib src",
     "test": "vitest run",
+    "coverage": "vitest run --coverage",
     "release": "npm run lint && npm run test && npm run build && changelogen --release && npm publish && git push --follow-tags",
     "releaseBeta": "changelogen --release && npm publish --tag beta && git push --follow-tags",
     "build2": "vue-tsc && vite build"
@@ -38,6 +39,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.1",
+    "@vitest/coverage-v8": "^1.1.1",
     "@vue/eslint-config-typescript": "^12.0.0",
     "@vue/test-utils": "^2.4.3",
     "changelogen": "^0.5.5",
