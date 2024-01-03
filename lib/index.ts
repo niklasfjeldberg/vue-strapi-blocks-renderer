@@ -1,4 +1,4 @@
-export { BlocksRenderer as useStrapiBlocks } from './blocksRenderer';
+export { BlocksRenderer as StrapiBlocks } from './blocksRenderer';
 export type {
   BlocksComponents,
   ModifiersComponents,

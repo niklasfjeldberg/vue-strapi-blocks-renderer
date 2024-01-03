@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
 import { describe, it, expect } from 'vitest';
 
-import { useStrapiBlocks as StrapiBlocks, type BlocksContent } from '../lib';
+import { StrapiBlocks, type BlocksContent } from '../lib';
 import data from '../data/data.json';
 
 const blocks = mount(StrapiBlocks, {

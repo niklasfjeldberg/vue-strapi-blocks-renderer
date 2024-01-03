@@ -26,10 +26,7 @@ npm install vue-strapi-blocks-renderer vue
 After fetching your Strapi content, you can use the BlocksRenderer component to render the data from a blocks attribute. Pass the array of blocks coming from your Strapi API to the `content` prop:
 
 ```ts
-import {
-  useStrapiBlocks,
-  type BlocksContent,
-} from 'vue-strapi-blocks-renderer';
+import { StrapiBlocks, type BlocksContent } from 'vue-strapi-blocks-renderer';
 
 // Content should come from your Strapi API
 const content: BlocksContent = [
@@ -39,7 +36,7 @@ const content: BlocksContent = [
   },
 ];
 
-const VNode = useStrapiBlocks({ content: content });
+const VNode = StrapiBlocks({ content: content });
 ```
 
 ```html
@@ -51,7 +48,7 @@ const VNode = useStrapiBlocks({ content: content });
 Or
 
 ```ts
-import { useStrapiBlocks as StrapiBlocks } from 'vue-strapi-blocks-renderer';
+import { StrapiBlocks as StrapiBlocks } from 'vue-strapi-blocks-renderer';
 ```
 
 ```html
@@ -85,7 +82,7 @@ To provide your own components, pass an object to the blocks and modifiers props
 import { h } from 'vue';
 
 import {
-  useStrapiBlocks,
+  StrapiBlocks,
   type BlocksComponents,
   type ModifiersComponents,
 } from 'vue-strapi-blocks-renderer';
@@ -100,7 +97,7 @@ const userModifier: ModifiersComponents = {
   bold: (props) => h('strong', { class: 'text-red' }, props.children),
 };
 
-const VNode = useStrapiBlocks({
+const VNode = StrapiBlocks({
   content: content,
   modifier: userModifier,
   blocks: userBlocks,
