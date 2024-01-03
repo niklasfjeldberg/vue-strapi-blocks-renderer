@@ -32,6 +32,7 @@ const augmentProps = (content: StrapiNode) => {
         if (node.type === 'link')
           return currentPlainText.concat(getPlainText(node.children));
 
+        // If type is not accounted for skip it.
         return currentPlainText;
       }, '');
     };

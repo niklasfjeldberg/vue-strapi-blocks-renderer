@@ -21,9 +21,7 @@ export const Text = ({ componentsContext, text, ...modifiers }: TextType) => {
   return modifierNames.reduce(
     (children: string, modifierName: Modifier) => {
       // Don't wrap the text if the modifier is disabled
-      if (!modifiers[modifierName]) {
-        return children;
-      }
+      if (!modifiers[modifierName]) return children;
 
       const ModifierComponent = modifierComponents[modifierName];
 
