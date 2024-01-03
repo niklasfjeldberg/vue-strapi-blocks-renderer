@@ -1,5 +1,26 @@
 # Changelog
 
+## v0.1.1
+
+[compare changes](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/compare/v0.1.0...v0.1.1)
+
+### 🩹 Fixes
+
+- Remove dep ([a6165ae](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/a6165ae))
+- Wrong props used in code block ([19e4d4a](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/19e4d4a))
+
+### 💅 Refactors
+
+- Comment + clean code ([bdd91bb](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/bdd91bb))
+
+### ✅ Tests
+
+- Improve testing ([b33897a](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/b33897a))
+
+### ❤️ Contributors
+
+- Niklas Fjeldberg <github@fjeldberg.me>
+
 ## v0.1.0
 
 [compare changes](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/compare/v0.0.13...v0.1.0)
