@@ -81,6 +81,7 @@ describe('render blocks', () => {
 });
 
 import dataError from '../data/data-with-error.json';
+import { h } from 'vue';
 
 const blocks2 = mount(StrapiBlocks, {
   props: {
@@ -99,5 +100,26 @@ describe('render blocks', () => {
 describe('no content inputed', () => {
   it('error', () => {
     expect(() => StrapiBlocks()).toThrowError();
+  });
+});
+
+const blocks3 = mount(StrapiBlocks, {
+  props: {
+    content: data as BlocksContent,
+    blocks: {
+      paragraph: (props) => h('p', { class: 'text-red' }, props.children),
+    },
+    modifiers: {
+      code: (props) => h('code', { class: 'text-blue' }, props.children),
+    },
+  },
+});
+
+describe('render custom components and modifiers', () => {
+  it('custom component', () => {
+    expect(blocks3.html()).toContain('class="text-red"');
+  });
+  it('custom modifier', () => {
+    expect(blocks3.html()).toContain('class="text-blue"');
   });
 });
