@@ -13,7 +13,7 @@ export const defaultComponents: ComponentsContextValue = {
   blocks: {
     'paragraph': (props) => h('p', {}, props.children),
     'quote': (props) => h('blockquote', {}, props.children),
-    'code': (props) => h('pre', {}, [h('code', {}, props.children)]),
+    'code': (props) => h('pre', {}, [h('code', {}, props.plainText)]),
     'heading': ({ level, children }) => {
       switch (level) {
         case 1:
