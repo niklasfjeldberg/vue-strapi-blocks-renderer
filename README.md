@@ -3,8 +3,8 @@
 [![npm version][npm-version-src]][npm-version-href]
 [![npm downloads][npm-downloads-src]][npm-downloads-href]
 [![License][license-src]][license-href]
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](https://makeapullrequest.com)
 [![codecov](https://codecov.io/gh/niklasfjeldberg/vue-strapi-blocks-renderer/graph/badge.svg?token=GU7ZGIRG0H)](https://codecov.io/gh/niklasfjeldberg/vue-strapi-blocks-renderer)
+[![ci](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/actions/workflows/ci.yml/badge.svg)](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/actions/workflows/ci.yml)
 
 Easily render the content of Strapi's new Blocks rich text editor in your Vue frontend.
 
