@@ -48,7 +48,7 @@ const VNode = StrapiBlocks({ content: content });
 Or
 
 ```ts
-import { StrapiBlocks as StrapiBlocks } from 'vue-strapi-blocks-renderer';
+import { StrapiBlocks } from 'vue-strapi-blocks-renderer';
 ```
 
 ```html
