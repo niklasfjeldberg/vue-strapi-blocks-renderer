@@ -1,4 +1,4 @@
-import { h, ref } from 'vue';
+import { h } from 'vue';
 
 import { Block } from './block';
 
@@ -67,10 +67,6 @@ export const BlocksRenderer = (props: BlocksRendererProps) => {
     ...props.modifiers,
   };
 
-  // Use refs because we can mutate them and avoid triggering re-renders
-  /* const missingBlockTypes = ref<string[]>([]);
-  const missingModifierTypes = ref<string[]>([]); */
-
   const componentsContext: ComponentsContextValue = {
     blocks,
     modifiers,
@@ -78,7 +74,7 @@ export const BlocksRenderer = (props: BlocksRendererProps) => {
     missingModifierTypes: [],
   };
 
-  if (!props.content) throw new Error('BlocksRenderer content empty');
+  if (!props.content) throw new Error('BlocksRenderer content is empty');
 
   const divs = props.content.map((content) =>
     Block({ content, componentsContext }),

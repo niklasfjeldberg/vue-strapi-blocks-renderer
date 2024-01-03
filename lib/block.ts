@@ -1,14 +1,14 @@
-import type { Component } from 'vue';
 import type {
   StrapiNode,
   ComponentsContextValue,
   GetPropsFromNode,
 } from './types';
 
+import type { VNode } from 'vue';
 import { Text } from './text';
 import { name } from '../package.json';
 
-type BlockComponentProps = GetPropsFromNode<Node>;
+type BlockComponentProps = GetPropsFromNode<StrapiNode>;
 
 interface BlockProps {
   content: StrapiNode;
@@ -50,9 +50,10 @@ export const Block = ({ content, componentsContext }: BlockProps) => {
 
   // Get matching component from the context
   const { blocks, missingBlockTypes } = componentsContext;
-  const BlockComponent = blocks[type] as
-    | Component<BlockComponentProps>
-    | undefined;
+
+  const BlockComponent = blocks[type] as (
+    props: BlockComponentProps,
+  ) => VNode | undefined;
 
   if (!BlockComponent) {
     // Only warn once per missing block

@@ -1,4 +1,4 @@
-import type { VNode, Component } from 'vue';
+import type { VNode } from 'vue';
 // text
 // ----------
 
@@ -98,7 +98,7 @@ export type RootNode =
 
 export type StrapiNode = RootNode | NonTextInlineNode;
 
-// Util to convert a node to the props of the corresponding React component
+// Util to convert a node to the props of the corresponding component
 export type GetPropsFromNode<T> = Omit<T, 'type' | 'children'> & {
   children?: VNode;
   // For code blocks, add a plainText property that is created by this renderer
@@ -107,17 +107,17 @@ export type GetPropsFromNode<T> = Omit<T, 'type' | 'children'> & {
 
 // Map of all block types to their matching component
 export type BlocksComponents = {
-  [K in StrapiNode['type']]: Component<
-    // Find the BlockProps in the union that match the type key of the current BlockNode
-    // and use it as the component props
-    GetPropsFromNode<Extract<Node, { type: K }>>
-  >;
+  [K in StrapiNode['type']]: (
+    // Find the BlockProps in the union that match the type key of the current BlockNode and use it as the component props
+    props: GetPropsFromNode<Extract<StrapiNode, { type: K }>>,
+  ) => VNode;
 };
 
-// Map of all inline types to their matching React component
+// Map of all inline types to their matching components
 export type ModifiersComponents = {
-  // React.ComponentType
-  [K in Modifier]: Component<{ children: VNode }>;
+  [K in Modifier]: (
+    props: GetPropsFromNode<Extract<StrapiNode, { type: K }>>,
+  ) => VNode;
 };
 
 export interface ComponentsContextValue {

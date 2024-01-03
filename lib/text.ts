@@ -11,9 +11,6 @@ interface TextType extends TextInlineProps {
 }
 
 export const Text = ({ componentsContext, text, ...modifiers }: TextType) => {
-  // TOOD: what to do when text is empty?
-  // if (!text) return;
-
   // Get matching component from the context
   const { modifiers: modifierComponents, missingModifierTypes } =
     componentsContext;
@@ -22,7 +19,7 @@ export const Text = ({ componentsContext, text, ...modifiers }: TextType) => {
 
   // Loop on each active modifier to wrap the text in its component
   return modifierNames.reduce(
-    (children, modifierName) => {
+    (children: string, modifierName: Modifier) => {
       // Don't wrap the text if the modifier is disabled
       if (!modifiers[modifierName]) {
         return children;
