@@ -1,7 +1,7 @@
 {
   "name": "vue-strapi-blocks-renderer",
   "private": false,
-  "version": "0.0.13",
+  "version": "0.1.0",
   "description": "A Vue renderer for the Strapi's Blocks rich text editor. Compatible with Nuxt.",
   "repository": "https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer",
   "homepage": "https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer#readme",

@@ -1,5 +1,36 @@
 # Changelog
 
+## v0.1.0
+
+[compare changes](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/compare/v0.0.13...v0.1.0)
+
+### 🩹 Fixes
+
+- Path ([92afc9d](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/92afc9d))
+- Switch + recursive updates error ([8281e5c](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/8281e5c))
+- Change dep to devDep ([95f6dfe](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/95f6dfe))
+- Some types fixed + cleaning code ([ce9c36b](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/ce9c36b))
+
+### 💅 Refactors
+
+- ⚠️  From useStrapiBlocks to StrapiBlocks ([a058bc8](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/a058bc8))
+
+### 📖 Documentation
+
+- Coverage badge ([1e74727](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/1e74727))
+
+### ✅ Tests
+
+- Add coverage test + test non existing blocks ([6b39a49](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/6b39a49))
+
+#### ⚠️ Breaking Changes
+
+- ⚠️  From useStrapiBlocks to StrapiBlocks ([a058bc8](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/a058bc8))
+
+### ❤️ Contributors
+
+- Niklas Fjeldberg <github@fjeldberg.me>
+
 ## v0.0.13
 
 [compare changes](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/compare/v0.0.12...v0.0.13)
