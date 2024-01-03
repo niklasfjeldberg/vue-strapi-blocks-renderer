@@ -71,13 +71,18 @@
     ]
   },
   {
+    "type": "link",
+    "url": "https://google.com",
+    "children": [{ "text": "Root link", "type": "text" }]
+  },
+  {
     "type": "paragraph",
     "children": [
       { "text": "", "type": "text" },
       {
         "url": "https://google.com",
         "type": "link",
-        "children": [{ "text": "Link", "type": "text" }]
+        "children": [{ "text": "Inline link", "type": "text" }]
       },
       {
         "bold": true,
@@ -95,7 +100,18 @@
   },
   {
     "type": "code",
-    "children": [{ "text": "Code block", "type": "text" }]
+    "children": [
+      { "text": "Code block", "type": "text" },
+      {
+        "type": "link",
+        "url": "https://google.com",
+        "children": [{ "text": "link", "type": "text" }]
+      },
+      {
+        "type": "paragraph",
+        "children": [{ "code": true, "text": "Code string", "type": "text" }]
+      }
+    ]
   },
   {
     "type": "list",

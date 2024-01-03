@@ -46,16 +46,21 @@ describe('render blocks', () => {
       '<p><del><u><em><strong>Bold, italic, underlined, and strikethorugh text</strong></em></u></del></p>',
     );
   });
+  it('a', () => {
+    expect(blocks.html()).toContain(
+      '<a href="https://google.com">Root link</a>',
+    );
+  });
   it('p > a', () => {
     expect(blocks.html()).toContain(
-      '<p><a href="https://google.com">Link</a><del><u><em><strong></strong></em></u></del></p>',
+      '<p><a href="https://google.com">Inline link</a><del><u><em><strong></strong></em></u></del></p>',
     );
   });
   it('p > code', () => {
     expect(blocks.html()).toContain('<p><code>Code string</code></p>');
   });
   it('pre > code', () => {
-    expect(blocks.html()).toContain('<pre><code>Code block</code></pre>');
+    expect(blocks.html()).toContain('<pre><code>Code blocklink</code></pre>');
   });
   it('ol', () => {
     expect(blocks.html()).toContain('<ol>');
@@ -86,7 +91,13 @@ const blocks2 = mount(StrapiBlocks, {
 describe('render blocks', () => {
   it('non existing block types and modifiers', () => {
     expect(blocks2.html()).toContain(
-      '<div class="strapi-blocks-wrapper" missingblocktypes="nonExistingType1,nonExistingType2" missingmodifiertypes="nonExistingModifier1,nonExistingModifier2">',
+      '<div class="strapi-blocks-wrapper" missingblocktypes="nonExistingType1,text2,nonExistingType2" missingmodifiertypes="nonExistingModifier1,nonExistingModifier2">',
     );
+  });
+});
+
+describe('no content inputed', () => {
+  it('error', () => {
+    expect(() => StrapiBlocks()).toThrowError();
   });
 });

@@ -10,6 +10,12 @@
     ]
   },
   {
+    "type": "paragraph",
+    "children": [
+      { "text": "Gives warning, non existing text type.", "type": "text2" }
+    ]
+  },
+  {
     "type": "nonExistingType2",
     "children": [{ "text": "Gives warning", "type": "text" }]
   },
