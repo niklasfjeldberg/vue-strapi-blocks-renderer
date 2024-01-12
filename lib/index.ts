@@ -4,3 +4,6 @@ export type {
   ModifiersComponents,
   BlocksContent,
 } from './types';
+
+// fix export types for vite-plugin-dts
+import './types';

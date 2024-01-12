@@ -1,10 +1,16 @@
 <template>
   <div class="mx-auto max-w-[800px] border-2">
-    <StrapiBlocks :content="data as BlocksContent" />
+    <StrapiBlocks v-if="data" :content="data" />
   </div>
 </template>
 
 <script setup lang="ts">
-import data from '../data/data.json';
+import { ref } from 'vue';
 import { StrapiBlocks, type BlocksContent } from '../lib/index';
+
+const data = ref<BlocksContent>();
+
+import('../data/data.json').then(
+  (m) => (data.value = m.default as BlocksContent),
+);
 </script>
