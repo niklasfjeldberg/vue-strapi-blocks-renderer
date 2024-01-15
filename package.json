@@ -3,7 +3,10 @@
   "private": false,
   "version": "0.1.1",
   "description": "A Vue renderer for the Strapi's Blocks rich text editor. Compatible with Nuxt.",
-  "repository": "https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer.git"
+  },
   "homepage": "https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer#readme",
   "bugs": {
     "url": "https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/issues"
