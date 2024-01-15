@@ -63,12 +63,12 @@ You can provide your own Vue components to the renderer, both for blocks and mod
 
 - Blocks are full-width elements, usually at the root of the content. The available options are:
   - paragraph
-  - heading (receives level)
-  - list (receives format)
+  - heading (receives `level`)
+  - list (receives `format`)
   - quote
-  - code (receives plainText)
-  - image (receives image)
-  - link (receives url)
+  - code (receives `plainText`)
+  - image (receives `image`)
+  - link (receives `url`)
 - Modifiers are inline elements, used to change the appearance of fragments of text within a block. The available options are:
   - bold
   - italic
