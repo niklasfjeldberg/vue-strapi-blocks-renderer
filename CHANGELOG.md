@@ -1,5 +1,40 @@
 # Changelog
 
+## v0.1.2
+
+[compare changes](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/compare/v0.1.1...v0.1.2)
+
+### 🚀 Enhancements
+
+- Types ([a74b7b2](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/a74b7b2))
+
+### 🩹 Fixes
+
+- Prettier formatting ([c026b2a](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/c026b2a))
+- Add new files ([caead90](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/caead90))
+- Improve github actions ([7c35a03](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/7c35a03))
+- Rep ([b3baae2](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/b3baae2))
+
+### 💅 Refactors
+
+- Move to pnpm + add new scripts ([8272a69](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/8272a69))
+- Eslint ignore to config file ([2541231](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/2541231))
+
+### 📖 Documentation
+
+- Fix ([40ba470](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/40ba470))
+- Added CI badge ([8014c61](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/8014c61))
+- Improve formating ([dfa31a7](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/dfa31a7))
+
+### ✅ Tests
+
+- Testing for custom modifiers and components ([65a42ff](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/65a42ff))
+
+### ❤️ Contributors
+
+- Niklas Fjeldberg <github@fjeldberg.me>
+- Reslear <reslear@gmail.com>
+
 ## v0.1.1
 
 [compare changes](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/compare/v0.1.0...v0.1.1)

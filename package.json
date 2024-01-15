@@ -1,7 +1,7 @@
 {
   "name": "vue-strapi-blocks-renderer",
   "private": false,
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "A Vue renderer for the Strapi's Blocks rich text editor. Compatible with Nuxt.",
   "repository": {
     "type": "git",
@@ -39,8 +39,8 @@
     "test:coverage": "vitest run --coverage",
     "test:types": "vue-tsc --noEmit",
     "release:pre": "pnpm build && pnpm lint && pnpm test:types && pnpm test",
-    "release": "pnpm release:pre && npm publish && git push --follow-tags",
-    "releaseBeta": "pnpm release:pre && npm publish --tag beta && git push --follow-tags"
+    "release": "pnpm release:pre && changelogen --release && npm publish && git push --follow-tags",
+    "releaseBeta": "pnpm release:pre && changelogen --release && npm publish --tag beta && git push --follow-tags"
   },
   "peerDependencies": {
     "typescript": "latest",
