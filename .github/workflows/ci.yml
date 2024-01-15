@@ -23,13 +23,22 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-          cache: 'npm'
+          cache: 'pnpm'
 
       - name: 📦 Install dependencies
-        run: npm install
+        run: pnpm install
+
+      - name: 📦 Build
+        run: pnpm build
+
+      - name: 📦 Lint
+        run: pnpm lint
+
+      - name: 📦 Test types
+        run: pnpm test:types
 
       - name: 🧪 Test & coverage
-        run: npm run coverage
+        run: pnpm run test:coverage
 
       - name: 🟩 Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
