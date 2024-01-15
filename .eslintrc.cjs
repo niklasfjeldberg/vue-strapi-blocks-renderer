@@ -12,6 +12,7 @@ module.exports = {
     'plugin:prettier/recommended',
   ],
   plugins: ['prettier'],
+  ignorePatterns: ['dist', 'node_modules', '.env', 'coverage'],
   rules: {
     'prettier/prettier': ['error'],
     // 'vue/html-indent': ['error', 4],
