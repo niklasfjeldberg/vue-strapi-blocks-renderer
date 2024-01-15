@@ -4,3 +4,5 @@ node_modules
 dist
 .env
 coverage
+CHANGELOG.md
+pnpm-lock.yaml
