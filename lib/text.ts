@@ -19,6 +19,7 @@ export const Text = ({ componentsContext, text, ...modifiers }: TextType) => {
 
   // Loop on each active modifier to wrap the text in its component
   return modifierNames.reduce(
+    // @ts-ignore
     (children: string, modifierName: Modifier) => {
       // Don't wrap the text if the modifier is disabled
       if (!modifiers[modifierName]) return children;
@@ -38,7 +39,10 @@ export const Text = ({ componentsContext, text, ...modifiers }: TextType) => {
         return children;
       }
 
-      return ModifierComponent({ children });
+      return ModifierComponent({
+        // @ts-ignore
+        children,
+      });
     },
     // By default, return the text without any wrapper to avoid useless nesting
     text,

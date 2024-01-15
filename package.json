@@ -13,12 +13,14 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/vue-strapi-blocks-renderer.umd.cjs",
-  "module": "./dist/vue-strapi-blocks-renderer.js",
+  "main": "./dist/vue-strapi-blocks-renderer.cjs",
+  "module": "./dist/vue-strapi-blocks-renderer.mjs",
+  "types": "./dist/vue-strapi-blocks-renderer.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/vue-strapi-blocks-renderer.js",
-      "require": "./dist/vue-strapi-blocks-renderer.umd.cjs"
+      "import": "./dist/vue-strapi-blocks-renderer.mjs",
+      "require": "./dist/vue-strapi-blocks-renderer.cjs",
+      "types": "./dist/vue-strapi-blocks-renderer.d.ts"
     }
   },
   "scripts": {
@@ -39,6 +41,7 @@
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.6.1",
+    "@types/node": "^20.11.0",
     "@vitejs/plugin-vue": "^5.0.1",
     "@vitest/coverage-v8": "^1.1.1",
     "@vue/eslint-config-typescript": "^12.0.0",
@@ -52,6 +55,7 @@
     "prettier": "^3.1.1",
     "typescript": "^5.2.2",
     "vite": "^5.0.8",
+    "vite-plugin-dts": "^3.7.0",
     "vitest": "^1.1.0",
     "vue": "latest",
     "vue-tsc": "^1.8.25"
