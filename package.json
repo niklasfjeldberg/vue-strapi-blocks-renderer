@@ -26,14 +26,19 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "clean": "rimraf coverage node_modules dist",
     "preview": "vite preview",
-    "prettier": "prettier . --write",
-    "lint": "eslint --ext .ts lib src",
+    "lint:js": "eslint --ext \".js,.ts,.vue\" --ignore-path .gitignore .",
+    "lint:prettier": "prettier --check .",
+    "lint:fix": "prettier --write --list-different . && pnpm lint:js --fix",
+    "lint": "pnpm lint:js && pnpm lint:prettier",
+    "test:all": "pnpm test && pnpm test:types && pnpm lint",
     "test": "vitest run",
-    "coverage": "vitest run --coverage",
-    "release": "npm run lint && npm run test && npm run build && changelogen --release && npm publish && git push --follow-tags",
-    "releaseBeta": "changelogen --release && npm publish --tag beta && git push --follow-tags",
-    "build2": "vue-tsc && vite build"
+    "test:types": "vue-tsc --noEmit",
+    "test:coverage": "vitest run --coverage",
+    "release:pre": "pnpm build && pnpm lint && pnpm test:all && git push --follow-tags",
+    "release": "pnpm release:pre && npm publish",
+    "releaseBeta": "pnpm release:pre && npm publish --tag beta"
   },
   "peerDependencies": {
     "typescript": "latest",
