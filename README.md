@@ -11,7 +11,8 @@ Easily render the content of Strapi's new Blocks rich text editor in your Vue fr
 Based on [@strapi/blocks-react-renderer](https://github.com/strapi/blocks-react-renderer)
 
 - ✨ [Release Notes](/CHANGELOG.md)
-- 🏀 [Online playground](https://stackblitz.com/github/niklasfjeldberg/vue-strapi-blocks-renderer?file=src%2FApp.vue)
+- 👀 [Demo](https://reslear.github.io/vue-strapi-blocks-renderer-demo/)
+- 🏀 [Online stackblitz playground](https://stackblitz.com/github/niklasfjeldberg/vue-strapi-blocks-renderer?file=src%2FApp.vue)
 
 ## Installation
 
