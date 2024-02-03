@@ -89,21 +89,22 @@ const blocks2 = mount(StrapiBlocks, {
   },
 });
 
-describe('render blocks', () => {
-  it('non existing block modifiers', () => {
+describe('Missing blocks are comments', () => {
+  it('Missing block modifiers', () => {
     expect(blocks2.html()).toContain(
-      'missingModifierTypes: nonExistingModifier1,nonExistingModifier2"',
+      'missingModifierTypes: nonExistingModifier1,nonExistingModifier2',
     );
   });
-  it('non existing block types', () => {
+  it('Missing block types', () => {
     expect(blocks2.html()).toContain(
-      'missingBlockTypes: nonExistingType1,text2,nonExistingType2"',
+      'missingBlockTypes: nonExistingType1,text2,nonExistingType2',
     );
   });
 });
 
-describe('no content inputed', () => {
+describe('no content in input', () => {
   it('error', () => {
+    // @ts-expect-error
     expect(() => StrapiBlocks()).toThrowError();
   });
 });
