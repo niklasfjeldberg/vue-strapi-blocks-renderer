@@ -43,7 +43,6 @@
     "releaseBeta": "pnpm release:pre && changelogen --release && npm publish --tag beta && git push --follow-tags"
   },
   "peerDependencies": {
-    "typescript": "latest",
     "vue": "latest"
   },
   "devDependencies": {
