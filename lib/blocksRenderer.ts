@@ -1,4 +1,4 @@
-import { h } from 'vue';
+import { h, Fragment, Comment } from 'vue';
 
 import { Block } from './block';
 
@@ -80,13 +80,15 @@ export const BlocksRenderer = (props: BlocksRendererProps) => {
     Block({ content, componentsContext }),
   );
 
+  if(componentsContext.missingBlockTypes.length)
+    divs.unshift(h(Comment, `missingBlockTypes: ${componentsContext.missingBlockTypes}`))
+
+  if(componentsContext.missingModifierTypes.length)
+    divs.unshift(h(Comment, `missingModifierTypes: ${componentsContext.missingModifierTypes}`))
+
   return h(
-    'div',
-    {
-      class: 'strapi-blocks-wrapper',
-      missingBlockTypes: componentsContext.missingBlockTypes,
-      missingModifierTypes: componentsContext.missingModifierTypes,
-    },
-    divs,
+    Fragment,
+    divs
   );
+
 };

@@ -90,9 +90,14 @@ const blocks2 = mount(StrapiBlocks, {
 });
 
 describe('render blocks', () => {
-  it('non existing block types and modifiers', () => {
+  it('non existing block modifiers', () => {
     expect(blocks2.html()).toContain(
-      '<div class="strapi-blocks-wrapper" missingblocktypes="nonExistingType1,text2,nonExistingType2" missingmodifiertypes="nonExistingModifier1,nonExistingModifier2">',
+      'missingModifierTypes: nonExistingModifier1,nonExistingModifier2"',
+    );
+  });
+  it('non existing block types', () => {
+    expect(blocks2.html()).toContain(
+      'missingBlockTypes: nonExistingType1,text2,nonExistingType2"',
     );
   });
 });
