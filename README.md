@@ -14,6 +14,14 @@ Based on [@strapi/blocks-react-renderer](https://github.com/strapi/blocks-react-
 - 👀 [Demo](https://reslear.github.io/vue-strapi-blocks-renderer-demo/)
 - 🏀 [Online stackblitz playground](https://stackblitz.com/github/niklasfjeldberg/vue-strapi-blocks-renderer?file=src%2FApp.vue)
 
+## Features
+
+- No dependencies
+- Utilizes Vue futures
+- Custom block types and modifiers
+- Works with other editors that Strapi Blocks
+- Typescript support
+
 ## Installation
 
 Install the Blocks renderer and its peer dependencies:
