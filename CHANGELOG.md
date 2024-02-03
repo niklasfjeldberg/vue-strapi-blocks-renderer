@@ -1,5 +1,37 @@
 # Changelog
 
+## v0.2.0
+
+[compare changes](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/compare/v0.1.2...v0.2.0)
+
+### 🚀 Enhancements
+
+- ⚠️  Render Fragment insead div wrapper ([c40487b](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/c40487b))
+
+### 🩹 Fixes
+
+- Prettier formatting ([108cbee](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/108cbee))
+- Lint + prettier code ([2a2599c](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/2a2599c))
+- Missing blocks tests locking for wrong string ([b5e27a1](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/b5e27a1))
+- Formatting ([ba4288e](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/ba4288e))
+
+### 📖 Documentation
+
+- Features section ([eb4a755](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/eb4a755))
+
+### 🏡 Chore
+
+- **dep:** Update packages ([6c69722](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/6c69722))
+
+#### ⚠️ Breaking Changes
+
+- ⚠️  Render Fragment insead div wrapper ([c40487b](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/c40487b))
+
+### ❤️ Contributors
+
+- Niklas Fjeldberg <github@fjeldberg.me>
+- Reslear <reslear@gmail.com>
+
 ## v0.1.2
 
 [compare changes](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/compare/v0.1.1...v0.1.2)
