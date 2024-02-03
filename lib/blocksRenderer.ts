@@ -80,15 +80,18 @@ export const BlocksRenderer = (props: BlocksRendererProps) => {
     Block({ content, componentsContext }),
   );
 
-  if(componentsContext.missingBlockTypes.length)
-    divs.unshift(h(Comment, `missingBlockTypes: ${componentsContext.missingBlockTypes}`))
+  if (componentsContext.missingBlockTypes.length)
+    divs.unshift(
+      h(Comment, `missingBlockTypes: ${componentsContext.missingBlockTypes}`),
+    );
 
-  if(componentsContext.missingModifierTypes.length)
-    divs.unshift(h(Comment, `missingModifierTypes: ${componentsContext.missingModifierTypes}`))
+  if (componentsContext.missingModifierTypes.length)
+    divs.unshift(
+      h(
+        Comment,
+        `missingModifierTypes: ${componentsContext.missingModifierTypes}`,
+      ),
+    );
 
-  return h(
-    Fragment,
-    divs
-  );
-
+  return h(Fragment, divs);
 };
