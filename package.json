@@ -43,7 +43,7 @@
     "releaseBeta": "pnpm release:pre && changelogen --release && npm publish --tag beta && git push --follow-tags"
   },
   "peerDependencies": {
-    "vue": "^3.4.21"
+    "vue": ">=3.4.0"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.10.1",
