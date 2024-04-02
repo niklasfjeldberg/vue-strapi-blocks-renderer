@@ -1,5 +1,24 @@
 # Changelog
 
+## v0.2.2
+
+[compare changes](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/compare/v0.2.1...v0.2.2)
+
+### 🩹 Fixes
+
+- Lint formatting ([a97fb9b](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/a97fb9b))
+- Add files to lint ignore ([bcc7344](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/bcc7344))
+- Prettier formatting ([5424265](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/5424265))
+- Peerdependenci 3.4 and above ([5c1d4d9](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/5c1d4d9))
+
+### 🏡 Chore
+
+- **release:** V0.2.1 ([dcd954c](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/dcd954c))
+
+### ❤️ Contributors
+
+- Niklas Fjeldberg <github@fjeldberg.me>
+
 ## v0.2.1
 
 [compare changes](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/compare/v0.2.0...v0.2.1)
