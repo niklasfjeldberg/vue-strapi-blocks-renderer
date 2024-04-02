@@ -78,6 +78,16 @@ describe('render blocks', () => {
       '<img src="https://cdn.pixabay.com/photo/2016/12/03/15/44/fireworks-1880045_960_720.jpg" alt="Alternative text">',
     );
   });
+
+  const dataWithBreak: BlocksContent = [
+    { type: 'paragraph', children: [{ text: '', type: 'text' }] },
+  ];
+
+  const blocks4 = mount(StrapiBlocks, { props: { content: dataWithBreak } });
+
+  it('empty p => br', () => {
+    expect(blocks4.html()).toContain('<br>');
+  });
 });
 
 import dataError from '../data/data-with-error.json';
