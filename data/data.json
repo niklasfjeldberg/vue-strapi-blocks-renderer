@@ -35,6 +35,18 @@
   },
   {
     "type": "paragraph",
+    "children": [{ "text": "Two <br> incoming", "type": "text" }]
+  },
+  {
+    "type": "paragraph",
+    "children": [{ "text": "", "type": "text" }]
+  },
+  {
+    "type": "paragraph",
+    "children": [{ "text": "", "type": "text" }]
+  },
+  {
+    "type": "paragraph",
     "children": [{ "bold": true, "text": "Bold text", "type": "text" }]
   },
   {
