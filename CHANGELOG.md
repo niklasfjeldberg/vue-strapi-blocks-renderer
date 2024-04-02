@@ -1,5 +1,30 @@
 # Changelog
 
+## v0.2.1
+
+[compare changes](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/compare/v0.2.0...v0.2.1)
+
+### 🩹 Fixes
+
+- Formatting ([352d41e](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/352d41e))
+- Remove unneded peerDependencie ([55e91f3](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/55e91f3))
+- Render empty paragraph as br elements ([#25](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/pull/25))
+- Remove old ts plugin ([111a1d5](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/111a1d5))
+- Add br to test data ([1b3958b](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/1b3958b))
+
+### 🏡 Chore
+
+- **dep:** Update packages ([c25be63](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/c25be63))
+
+### ✅ Tests
+
+- Added p => br test ([ede0a25](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/ede0a25))
+
+### ❤️ Contributors
+
+- Niklas Fjeldberg <github@fjeldberg.me>
+- Reslear <reslear@gmail.com>
+
 ## v0.2.0
 
 [compare changes](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/compare/v0.1.2...v0.2.0)
