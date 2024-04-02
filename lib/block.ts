@@ -5,6 +5,7 @@ import type {
 } from './types';
 
 import type { VNode } from 'vue';
+import { h } from 'vue';
 import { Text } from './text';
 import { name } from '../package.json';
 
@@ -70,6 +71,16 @@ export const Block = ({ content, componentsContext }: BlockProps) => {
   // Handle void types separately as they should not render children
   if (voidTypes.includes(type)) {
     return BlockComponent(props);
+  }
+
+  // Handle empty paragraphs separately as they should render a <br> tag
+  if (
+    type === 'paragraph' &&
+    childrenNodes.length === 1 &&
+    childrenNodes[0].type === 'text' &&
+    childrenNodes[0].text === ''
+  ) {
+    return h('br');
   }
 
   const augmentedProps = augmentProps(content);
