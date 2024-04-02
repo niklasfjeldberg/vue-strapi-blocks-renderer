@@ -6,3 +6,5 @@ dist
 coverage
 CHANGELOG.md
 pnpm-lock.yaml
+package.json
+tsconfig.json
