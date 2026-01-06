@@ -30,7 +30,7 @@ export const defaultComponents: ComponentsContextValue = {
           return h('h6', {}, children);
       }
     },
-    'link': (props) => h('a', { href: props.url }, props.children),
+    'link': (props) => h('a', { href: props.url, target: props.target ?? undefined, rel: props.rel ?? undefined }, props.children),
     'list': (props) => {
       const isUl = props.format === 'ordered';
       return h(isUl ? 'ol' : 'ul', {}, props.children);
