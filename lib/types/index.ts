@@ -23,6 +23,8 @@ interface LinkInlineNode {
   type: 'link';
   url: string;
   children: TextInlineNode[];
+  target?: string;
+  rel?: string;
 }
 
 type DefaultInlineNode = TextInlineNode | LinkInlineNode;
