@@ -16,11 +16,13 @@ Based on [@strapi/blocks-react-renderer](https://github.com/strapi/blocks-react-
 
 ## Features
 
-- No dependencies
-- Utilizes Vue futures
-- Custom block types and modifiers
-- Works with other editors that Strapi Blocks
-- Typescript support
+- Zero runtime dependencies
+- Renders line breaks (`\n`) as `<br>` elements
+- `plainText` prop available on `code` and `heading` blocks
+- `useStrapiBlocksContext()` composable for nested custom components
+- Custom block and modifier components
+- Full TypeScript support
+- Compatible with Nuxt
 
 ## Installation
 
@@ -34,8 +36,9 @@ npm install vue-strapi-blocks-renderer vue
 
 After fetching your Strapi content, you can use the BlocksRenderer component to render the data from a blocks attribute. Pass the array of blocks coming from your Strapi API to the `content` prop:
 
-```ts
-import { StrapiBlocks, type BlocksContent } from 'vue-strapi-blocks-renderer';
+```vue
+<script setup lang="ts">
+import { StrapiBlocks, type BlocksContent } from 'vue-strapi-blocks-renderer'
 
 // Content should come from your Strapi API
 const content: BlocksContent = [
@@ -43,74 +46,80 @@ const content: BlocksContent = [
     type: 'paragraph',
     children: [{ type: 'text', text: 'A simple paragraph' }],
   },
-];
+]
+</script>
 
-const VNode = StrapiBlocks({ content: content });
-```
-
-```html
 <template>
-  <VNode />
-</template>
-```
-
-Or
-
-```ts
-import { StrapiBlocks } from 'vue-strapi-blocks-renderer';
-```
-
-```html
-<template>
-  <StrapiBlocks :content="content" :modifiers="modifiers" :blocks="blocks" />
+  <StrapiBlocks :content="content" />
 </template>
 ```
 
 ## Custom components
 
-You can provide your own Vue components to the renderer, both for blocks and modifier. They will be merged with the default components, so you can override only the ones you need.
+You can provide your own Vue components to the renderer, both for blocks and modifiers. They will be merged with the default components, so you can override only the ones you need.
 
-- Blocks are full-width elements, usually at the root of the content. The available options are:
-  - paragraph
-  - heading (receives `level`)
-  - list (receives `format`)
-  - quote
-  - code (receives `plainText`)
-  - image (receives `image`)
-  - link (receives `url`)
-- Modifiers are inline elements, used to change the appearance of fragments of text within a block. The available options are:
-  - bold
-  - italic
-  - underline
-  - strikethrough
-  - code
+- **Blocks** are full-width elements, usually at the root of the content:
+  - `paragraph`
+  - `heading` (receives `level`, `plainText`)
+  - `list` (receives `format`)
+  - `quote`
+  - `code` (receives `plainText`)
+  - `image` (receives `image`)
+  - `link` (receives `url`, `target`, `rel`)
+- **Modifiers** are inline elements for text formatting:
+  - `bold`
+  - `italic`
+  - `underline`
+  - `strikethrough`
+  - `code`
 
-To provide your own components, pass an object to the blocks and modifiers props of the renderer. For each type, the value should be a React component that will receive the props of the block or modifier. Make sure to always render the children, so that the nested blocks and modifiers are rendered as well.
+To provide your own components, pass an object to the `blocks` and `modifiers` props. Each value should be a Vue render function that receives the props. Make sure to always render the children so nested content is displayed.
 
-```ts
-import { h } from 'vue';
-
+```vue
+<script setup lang="ts">
+import { h } from 'vue'
 import {
   StrapiBlocks,
   type BlocksComponents,
   type ModifiersComponents,
-} from 'vue-strapi-blocks-renderer';
+  type BlocksContent,
+} from 'vue-strapi-blocks-renderer'
 
-const userBlocks: BlocksComponents = {
-  // Will include the class "mb-4" on all paragraphs
+const content: BlocksContent = [/* your content */]
+
+const customBlocks: Partial<BlocksComponents> = {
   paragraph: (props) => h('p', { class: 'mb-4' }, props.children),
-};
+  heading: ({ level, plainText, children }) =>
+    h(`h${level}`, { id: plainText?.toLowerCase().replace(/\s+/g, '-') }, children),
+}
 
-const userModifier: ModifiersComponents = {
-  // Will include the class "text-red" on all bold text
-  bold: (props) => h('strong', { class: 'text-red' }, props.children),
-};
+const customModifiers: Partial<ModifiersComponents> = {
+  bold: (props) => h('strong', { class: 'font-bold text-blue-600' }, props.children),
+}
+</script>
 
-const VNode = StrapiBlocks({
-  content: content,
-  modifier: userModifier,
-  blocks: userBlocks,
-});
+<template>
+  <StrapiBlocks :content="content" :blocks="customBlocks" :modifiers="customModifiers" />
+</template>
+```
+
+## Accessing context in custom components
+
+If you need to access the blocks/modifiers context from within a custom component, use the `useStrapiBlocksContext()` composable:
+
+```ts
+import { h } from 'vue'
+import { useStrapiBlocksContext, type BlockChildren } from 'vue-strapi-blocks-renderer'
+
+const CustomParagraph = (props: { children?: BlockChildren }) => {
+  const { modifiers } = useStrapiBlocksContext()
+  const modifierCount = Object.keys(modifiers).length
+
+  return h('p', {}, [
+    props.children,
+    h('small', { class: 'text-gray-500' }, ` (${modifierCount} modifiers available)`),
+  ])
+}
 ```
 
 <!-- Badges -->
