@@ -26,7 +26,7 @@ const augmentProps = (content: StrapiNode) => {
   const { children: _, type, ...props } = content
   void _
 
-  if (type === 'code') {
+  if (type === 'code' || type === 'heading') {
     // Builds a plain text string from an array of nodes, regardless of links or modifiers
     const getPlainText = (children: StrapiNode['children']): string => {
       return children.reduce((currentPlainText, node) => {
@@ -76,18 +76,19 @@ export const Block = ({ content, componentsContext }: BlockProps): VNode | null 
   }
 
   // Handle empty paragraphs separately as they should render a <br> tag
+  const firstChild = childrenNodes[0]
   if (
     type === 'paragraph'
     && childrenNodes.length === 1
-    && childrenNodes[0].type === 'text'
-    && childrenNodes[0].text === ''
+    && firstChild?.type === 'text'
+    && firstChild.text === ''
   ) {
     return h('br')
   }
 
   const augmentedProps = augmentProps(content)
 
-  const theChildren: (string | VNode | null | undefined)[] = childrenNodes.map((childNode) => {
+  const theChildren: (string | VNode | null | undefined)[] = childrenNodes.flatMap((childNode) => {
     if (childNode.type === 'text') {
       const { type: _type, ...childNodeProps } = childNode
 

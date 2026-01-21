@@ -101,6 +101,53 @@ describe('render blocks', () => {
   it('empty p => br', () => {
     expect(blocks4.html()).toContain('<br>')
   })
+
+  it('renders line breaks in text', () => {
+    const dataWithLineBreaks: BlocksContent = [
+      { type: 'paragraph', children: [{ text: 'First line\nSecond line', type: 'text' }] },
+    ]
+    const wrapper = mount(StrapiBlocks, { props: { content: dataWithLineBreaks } })
+    const paragraph = wrapper.find('p')
+    expect(paragraph.html()).toContain('<br>')
+    expect(paragraph.html()).toContain('First line')
+    expect(paragraph.html()).toContain('Second line')
+  })
+
+  it('renders consecutive line breaks in text', () => {
+    const dataWithConsecutiveBreaks: BlocksContent = [
+      { type: 'paragraph', children: [{ text: 'First\n\nThird', type: 'text' }] },
+    ]
+    const wrapper = mount(StrapiBlocks, { props: { content: dataWithConsecutiveBreaks } })
+    const paragraph = wrapper.find('p')
+    // Should have two <br> tags for the double newline
+    const brCount = (paragraph.html().match(/<br>/g) || []).length
+    expect(brCount).toBe(2)
+    expect(paragraph.html()).toContain('First')
+    expect(paragraph.html()).toContain('Third')
+  })
+
+  it('heading receives plainText prop', () => {
+    const dataWithHeading: BlocksContent = [
+      {
+        type: 'heading',
+        level: 1,
+        children: [
+          { type: 'text', text: 'Hello ' },
+          { type: 'link', url: 'https://test.com', children: [{ type: 'text', text: 'World' }] },
+        ],
+      },
+    ]
+    const wrapper = mount(StrapiBlocks, {
+      props: {
+        content: dataWithHeading,
+        blocks: {
+          heading: ({ level, plainText, children }) =>
+            h(`h${level}`, { 'data-plain-text': plainText }, children),
+        },
+      },
+    })
+    expect(wrapper.find('h1').attributes('data-plain-text')).toBe('Hello World')
+  })
 })
 
 import dataError from '../data/data-with-error.json'

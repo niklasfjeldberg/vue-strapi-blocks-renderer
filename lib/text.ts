@@ -1,4 +1,5 @@
 import type { VNode } from 'vue'
+import { h } from 'vue'
 import type {
   TextInlineProps,
   Modifier,
@@ -11,7 +12,30 @@ interface TextType extends TextInlineProps {
   componentsContext: ComponentsContextValue
 }
 
-export const Text = ({ componentsContext, text, ...modifiers }: TextType): string | VNode => {
+/**
+ * Replaces line breaks (\n) in text with <br> elements
+ */
+const replaceLineBreaks = (text: string): (string | VNode)[] => {
+  const parts = text.split(/\r?\n|\r/g)
+
+  if (parts.length === 1) {
+    return [text]
+  }
+
+  const children: (string | VNode)[] = []
+  parts.forEach((part, idx) => {
+    if (idx > 0) {
+      children.push(h('br'))
+    }
+    if (part) {
+      children.push(part)
+    }
+  })
+
+  return children
+}
+
+export const Text = ({ componentsContext, text, ...modifiers }: TextType): (string | VNode)[] | VNode => {
   // Get matching component from the context
   const { modifiers: modifierComponents, missingModifierTypes }
     = componentsContext
@@ -19,7 +43,7 @@ export const Text = ({ componentsContext, text, ...modifiers }: TextType): strin
   const modifierNames = Object.keys(modifiers) as Modifier[]
 
   // Loop on each active modifier to wrap the text in its component
-  return modifierNames.reduce<string | VNode>(
+  return modifierNames.reduce<(string | VNode)[] | VNode>(
     (children, modifierName) => {
       // Don't wrap the text if the modifier is disabled
       if (!modifiers[modifierName]) return children
@@ -41,7 +65,7 @@ export const Text = ({ componentsContext, text, ...modifiers }: TextType): strin
 
       return ModifierComponent({ children })
     },
-    // By default, return the text without any wrapper to avoid useless nesting
-    text,
+    // By default, replace line breaks and return the text
+    replaceLineBreaks(text),
   )
 }

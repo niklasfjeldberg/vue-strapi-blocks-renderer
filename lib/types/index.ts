@@ -106,8 +106,8 @@ export type BlockChildren = (string | VNode | null | undefined)[] | VNode | stri
 // Util to convert a node to the props of the corresponding component
 export type GetPropsFromNode<T> = Omit<T, 'type' | 'children'> & {
   children?: BlockChildren
-  // For code blocks, add a plainText property that is created by this renderer
-  plainText?: T extends { type: 'code' } ? string : never
+  // For code and heading blocks, add a plainText property that is created by this renderer
+  plainText?: T extends { type: 'code' | 'heading' } ? string : never
 }
 
 // Map of all block types to their matching component
@@ -118,9 +118,9 @@ export type BlocksComponents = {
   ) => VNode;
 }
 
-// Props for modifier components (accepts string or VNode as children)
+// Props for modifier components (accepts string, VNode, or array of them as children)
 export interface ModifierChildrenProps {
-  children: string | VNode
+  children: (string | VNode)[] | VNode
 }
 
 // Map of all inline types to their matching components

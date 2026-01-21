@@ -6,6 +6,7 @@ export type {
   BlocksRendererProps,
   ModifierChildrenProps,
   ModifiersComponents,
+  RootNode,
 } from './types'
 
 // fix export types for vite-plugin-dts
