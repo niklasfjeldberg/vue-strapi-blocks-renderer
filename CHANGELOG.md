@@ -1,5 +1,36 @@
 # Changelog
 
+## v1.1.0
+
+[compare changes](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/compare/v0.2.2...v1.1.0)
+
+### 🚀 Enhancements
+
+- **link:** Add optional target and rel fields ([a1748be](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/a1748be))
+- **link:** Add optional target and rel fields ([df3fe6a](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/df3fe6a))
+- **link:** Add optional target and rel fields ([d9feda3](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/d9feda3))
+- **text:** Enhance text rendering with line breaks and plainText for headings ([f93b70a](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/f93b70a))
+- **context): add context key and composable for nested component access feat(renderer:** Refactor BlocksRenderer to use defineComponent and improve prop handling test: add tests for useStrapiBlocksContext and ensure proper context usage ([524612a](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/524612a))
+
+### 💅 Refactors
+
+- Clean up code formatting and improve readability ([5daa974](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/5daa974))
+
+### 📖 Documentation
+
+- Update README to enhance feature descriptions and usage examples ([dbb3304](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/dbb3304))
+
+### 🏡 Chore
+
+- **release:** V0.2.2 ([389f2ac](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/389f2ac))
+- **ci:** Update Node.js version to 22 in CI workflow ([099b283](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/099b283))
+- Update version to 1.0.0 in package.json ([e6ac0d1](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/e6ac0d1))
+
+### ❤️ Contributors
+
+- Niklas Fjeldberg <github@fjeldberg.me>
+- Christophe Carvalho Vilas-Boas <christophe.carvalhovilasboas@gmail.com>
+
 ## v0.2.2
 
 [compare changes](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/compare/v0.2.1...v0.2.2)
