@@ -1,8 +1,26 @@
-import { mount } from '@vue/test-utils'
-import { describe, it, expect } from 'vitest'
+/* eslint-disable vue/one-component-per-file */
+import { mount, config } from '@vue/test-utils'
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
+import { defineComponent, h } from 'vue'
 
-import { StrapiBlocks, type BlocksContent } from '../lib'
+import { StrapiBlocks, useStrapiBlocksContext, type BlocksContent } from '../lib'
 import data from '../data/data.json'
+
+// Suppress Vue warnings during tests
+config.global.config.warnHandler = () => {}
+
+// Store original console.warn
+const originalWarn = console.warn
+
+beforeEach(() => {
+  // Suppress console.warn for expected warnings
+  console.warn = vi.fn()
+})
+
+afterEach(() => {
+  // Restore console.warn
+  console.warn = originalWarn
+})
 
 const blocks = mount(StrapiBlocks, {
   props: {
@@ -153,19 +171,23 @@ describe('render blocks', () => {
 import dataError from '../data/data-with-error.json'
 import { h } from 'vue'
 
-const blocks2 = mount(StrapiBlocks, {
-  props: {
-    content: dataError as BlocksContent,
-  },
-})
-
 describe('Missing blocks are comments', () => {
   it('Missing block modifiers', () => {
+    const blocks2 = mount(StrapiBlocks, {
+      props: {
+        content: dataError as BlocksContent,
+      },
+    })
     expect(blocks2.html()).toContain(
       'missingModifierTypes: nonExistingModifier1,nonExistingModifier2',
     )
   })
   it('Missing block types', () => {
+    const blocks2 = mount(StrapiBlocks, {
+      props: {
+        content: dataError as BlocksContent,
+      },
+    })
     expect(blocks2.html()).toContain(
       'missingBlockTypes: nonExistingType1,text2,nonExistingType2',
     )
@@ -219,5 +241,39 @@ describe('render custom components and modifiers', () => {
   })
   it('custom modifier', () => {
     expect(blocks3.html()).toContain('class="text-blue"')
+  })
+})
+
+describe('useStrapiBlocksContext', () => {
+  it('provides context to nested components', () => {
+    const NestedComponent = defineComponent({
+      setup() {
+        const context = useStrapiBlocksContext()
+        return () => h('div', { 'data-testid': 'nested', 'data-has-blocks': !!context.blocks })
+      },
+    })
+
+    const wrapper = mount(StrapiBlocks, {
+      props: {
+        content: [{ type: 'paragraph', children: [{ type: 'text', text: 'Test' }] }] as BlocksContent,
+        blocks: {
+          paragraph: (props) => h('p', {}, [props.children, h(NestedComponent)]),
+        },
+      },
+    })
+
+    expect(wrapper.find('[data-testid="nested"]').exists()).toBe(true)
+    expect(wrapper.find('[data-testid="nested"]').attributes('data-has-blocks')).toBe('true')
+  })
+
+  it('throws error when used outside BlocksRenderer', () => {
+    const BadComponent = defineComponent({
+      setup() {
+        useStrapiBlocksContext()
+        return () => h('div')
+      },
+    })
+
+    expect(() => mount(BadComponent)).toThrowError('useStrapiBlocksContext must be used within a BlocksRenderer')
   })
 })

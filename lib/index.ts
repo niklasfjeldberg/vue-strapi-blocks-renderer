@@ -1,4 +1,5 @@
 export { BlocksRenderer, BlocksRenderer as StrapiBlocks } from './blocksRenderer'
+export { useStrapiBlocksContext, contextKey } from './context'
 export type {
   BlockChildren,
   BlocksComponents,
