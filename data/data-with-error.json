@@ -1,76 +1,167 @@
 [
   {
     "type": "nonExistingType1",
-    "children": [{ "text": "Gives warning", "type": "text" }]
+    "children": [
+      {
+        "text": "Gives warning",
+        "type": "text"
+      }
+    ]
   },
   {
-    "type": "paragraph",
+    "type": "nonExistingType1",
     "children": [
-      { "text": "Gives warning.", "nonExistingModifier1": true, "type": "text" }
+      {
+        "text": "Should not warn again",
+        "type": "text"
+      }
     ]
   },
   {
     "type": "paragraph",
     "children": [
-      { "text": "Gives warning, non existing text type.", "type": "text2" }
+      {
+        "text": "Gives warning.",
+        "nonExistingModifier1": true,
+        "type": "text"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "text": "Should not warn again.",
+        "nonExistingModifier1": true,
+        "type": "text"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "text": "Gives warning, non existing text type.",
+        "type": "text2"
+      }
     ]
   },
   {
     "type": "nonExistingType2",
-    "children": [{ "text": "Gives warning", "type": "text" }]
+    "children": [
+      {
+        "text": "Gives warning",
+        "type": "text"
+      }
+    ]
   },
   {
     "type": "paragraph",
     "children": [
-      { "text": "Gives warning.", "nonExistingModifier2": true, "type": "text" }
+      {
+        "text": "Gives warning.",
+        "nonExistingModifier2": true,
+        "type": "text"
+      }
     ]
   },
   {
     "type": "heading",
     "level": 1,
-    "children": [{ "text": "Header 1", "type": "text" }]
+    "children": [
+      {
+        "text": "Header 1",
+        "type": "text"
+      }
+    ]
   },
   {
     "type": "heading",
     "level": 2,
-    "children": [{ "text": "Header 2", "type": "text" }]
+    "children": [
+      {
+        "text": "Header 2",
+        "type": "text"
+      }
+    ]
   },
   {
     "type": "heading",
     "level": 3,
-    "children": [{ "text": "Header 3", "type": "text" }]
+    "children": [
+      {
+        "text": "Header 3",
+        "type": "text"
+      }
+    ]
   },
   {
     "type": "heading",
     "level": 4,
-    "children": [{ "text": "Header 4", "type": "text" }]
+    "children": [
+      {
+        "text": "Header 4",
+        "type": "text"
+      }
+    ]
   },
   {
     "type": "heading",
     "level": 5,
-    "children": [{ "text": "Header 5", "type": "text" }]
+    "children": [
+      {
+        "text": "Header 5",
+        "type": "text"
+      }
+    ]
   },
   {
     "type": "heading",
     "level": 6,
-    "children": [{ "text": "Header 6", "type": "text" }]
-  },
-  {
-    "type": "paragraph",
-    "children": [{ "text": "Normal text.", "type": "text" }]
-  },
-  {
-    "type": "paragraph",
-    "children": [{ "bold": true, "text": "Bold text", "type": "text" }]
-  },
-  {
-    "type": "paragraph",
-    "children": [{ "text": "Italic text", "type": "text", "italic": true }]
+    "children": [
+      {
+        "text": "Header 6",
+        "type": "text"
+      }
+    ]
   },
   {
     "type": "paragraph",
     "children": [
-      { "text": "Underlined text", "type": "text", "underline": true }
+      {
+        "text": "Normal text.",
+        "type": "text"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "bold": true,
+        "text": "Bold text",
+        "type": "text"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "text": "Italic text",
+        "type": "text",
+        "italic": true
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "text": "Underlined text",
+        "type": "text",
+        "underline": true
+      }
     ]
   },
   {
@@ -99,11 +190,19 @@
   {
     "type": "paragraph",
     "children": [
-      { "text": "", "type": "text" },
+      {
+        "text": "",
+        "type": "text"
+      },
       {
         "url": "https://google.com",
         "type": "link",
-        "children": [{ "text": "Link", "type": "text" }]
+        "children": [
+          {
+            "text": "Link",
+            "type": "text"
+          }
+        ]
       },
       {
         "bold": true,
@@ -117,11 +216,22 @@
   },
   {
     "type": "paragraph",
-    "children": [{ "code": true, "text": "Code string", "type": "text" }]
+    "children": [
+      {
+        "code": true,
+        "text": "Code string",
+        "type": "text"
+      }
+    ]
   },
   {
     "type": "code",
-    "children": [{ "text": "Code block", "type": "text" }]
+    "children": [
+      {
+        "text": "Code block",
+        "type": "text"
+      }
+    ]
   },
   {
     "type": "list",
@@ -129,19 +239,39 @@
     "children": [
       {
         "type": "list-item",
-        "children": [{ "text": "Ordered list 1", "type": "text" }]
+        "children": [
+          {
+            "text": "Ordered list 1",
+            "type": "text"
+          }
+        ]
       },
       {
         "type": "list-item",
-        "children": [{ "text": "Ordered list 2", "type": "text" }]
+        "children": [
+          {
+            "text": "Ordered list 2",
+            "type": "text"
+          }
+        ]
       },
       {
         "type": "list-item",
-        "children": [{ "text": "Ordered list 3", "type": "text" }]
+        "children": [
+          {
+            "text": "Ordered list 3",
+            "type": "text"
+          }
+        ]
       },
       {
         "type": "list-item",
-        "children": [{ "text": "Ordered list 4", "type": "text" }]
+        "children": [
+          {
+            "text": "Ordered list 4",
+            "type": "text"
+          }
+        ]
       }
     ]
   },
@@ -151,25 +281,50 @@
     "children": [
       {
         "type": "list-item",
-        "children": [{ "text": "Unordered list 1", "type": "text" }]
+        "children": [
+          {
+            "text": "Unordered list 1",
+            "type": "text"
+          }
+        ]
       },
       {
         "type": "list-item",
-        "children": [{ "text": "Unordered list 2", "type": "text" }]
+        "children": [
+          {
+            "text": "Unordered list 2",
+            "type": "text"
+          }
+        ]
       },
       {
         "type": "list-item",
-        "children": [{ "text": "Unordered list 3", "type": "text" }]
+        "children": [
+          {
+            "text": "Unordered list 3",
+            "type": "text"
+          }
+        ]
       },
       {
         "type": "list-item",
-        "children": [{ "text": "Unordered list 4", "type": "text" }]
+        "children": [
+          {
+            "text": "Unordered list 4",
+            "type": "text"
+          }
+        ]
       }
     ]
   },
   {
     "type": "quote",
-    "children": [{ "text": "Quote", "type": "text" }]
+    "children": [
+      {
+        "text": "Quote",
+        "type": "text"
+      }
+    ]
   },
   {
     "type": "image",
@@ -191,7 +346,20 @@
       "alternativeText": "Alternative text",
       "provider_metadata": null
     },
-    "children": [{ "text": "", "type": "text" }]
+    "children": [
+      {
+        "text": "",
+        "type": "text"
+      }
+    ]
   },
-  { "type": "paragraph", "children": [{ "text": "", "type": "text" }] }
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "text": "",
+        "type": "text"
+      }
+    ]
+  }
 ]

@@ -1,8 +1,8 @@
-import { resolve } from 'node:path';
-import { defineConfig } from 'vite';
-import vue from '@vitejs/plugin-vue';
-import { name } from './package.json';
-import dts from 'vite-plugin-dts';
+import { resolve } from 'node:path'
+import { defineConfig } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import { name } from './package.json'
+import dts from 'vite-plugin-dts'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -10,18 +10,9 @@ export default defineConfig({
     vue(),
     dts({
       include: ['lib/**/*.ts'],
-      staticImport: true,
-      insertTypesEntry: true,
-      rollupTypes: true,
+      tsconfigPath: './tsconfig.json',
     }),
   ],
-  test: {
-    globals: true,
-    environment: 'happy-dom',
-    coverage: {
-      exclude: ['data/**', 'lib/types/**', 'src/**', '.eslintrc.cjs'],
-    },
-  },
   build: {
     lib: {
       entry: resolve(__dirname, 'lib/index.ts'),
@@ -38,4 +29,4 @@ export default defineConfig({
       },
     },
   },
-});
+})

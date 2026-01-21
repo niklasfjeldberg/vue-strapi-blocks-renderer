@@ -2,61 +2,127 @@
   {
     "type": "heading",
     "level": 1,
-    "children": [{ "text": "Header 1", "type": "text" }]
+    "children": [
+      {
+        "text": "Header 1",
+        "type": "text"
+      }
+    ]
   },
   {
     "type": "heading",
     "level": 2,
-    "children": [{ "text": "Header 2", "type": "text" }]
+    "children": [
+      {
+        "text": "Header 2",
+        "type": "text"
+      }
+    ]
   },
   {
     "type": "heading",
     "level": 3,
-    "children": [{ "text": "Header 3", "type": "text" }]
+    "children": [
+      {
+        "text": "Header 3",
+        "type": "text"
+      }
+    ]
   },
   {
     "type": "heading",
     "level": 4,
-    "children": [{ "text": "Header 4", "type": "text" }]
+    "children": [
+      {
+        "text": "Header 4",
+        "type": "text"
+      }
+    ]
   },
   {
     "type": "heading",
     "level": 5,
-    "children": [{ "text": "Header 5", "type": "text" }]
+    "children": [
+      {
+        "text": "Header 5",
+        "type": "text"
+      }
+    ]
   },
   {
     "type": "heading",
     "level": 6,
-    "children": [{ "text": "Header 6", "type": "text" }]
-  },
-  {
-    "type": "paragraph",
-    "children": [{ "text": "Normal text.", "type": "text" }]
-  },
-  {
-    "type": "paragraph",
-    "children": [{ "text": "Two <br> incoming", "type": "text" }]
-  },
-  {
-    "type": "paragraph",
-    "children": [{ "text": "", "type": "text" }]
-  },
-  {
-    "type": "paragraph",
-    "children": [{ "text": "", "type": "text" }]
-  },
-  {
-    "type": "paragraph",
-    "children": [{ "bold": true, "text": "Bold text", "type": "text" }]
-  },
-  {
-    "type": "paragraph",
-    "children": [{ "text": "Italic text", "type": "text", "italic": true }]
+    "children": [
+      {
+        "text": "Header 6",
+        "type": "text"
+      }
+    ]
   },
   {
     "type": "paragraph",
     "children": [
-      { "text": "Underlined text", "type": "text", "underline": true }
+      {
+        "text": "Normal text.",
+        "type": "text"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "text": "Two <br> incoming",
+        "type": "text"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "text": "",
+        "type": "text"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "text": "",
+        "type": "text"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "bold": true,
+        "text": "Bold text",
+        "type": "text"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "text": "Italic text",
+        "type": "text",
+        "italic": true
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "text": "Underlined text",
+        "type": "text",
+        "underline": true
+      }
     ]
   },
   {
@@ -85,16 +151,52 @@
   {
     "type": "link",
     "url": "https://google.com",
-    "children": [{ "text": "Root link", "type": "text" }]
+    "children": [
+      {
+        "text": "Root link",
+        "type": "text"
+      }
+    ]
+  },
+  {
+    "type": "link",
+    "url": "https://external.com",
+    "target": "_blank",
+    "rel": "noopener noreferrer",
+    "children": [
+      {
+        "text": "External link with target and rel",
+        "type": "text"
+      }
+    ]
   },
   {
     "type": "paragraph",
     "children": [
-      { "text": "", "type": "text" },
+      {
+        "text": "Text with false modifiers",
+        "type": "text",
+        "bold": false,
+        "italic": false
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "text": "",
+        "type": "text"
+      },
       {
         "url": "https://google.com",
         "type": "link",
-        "children": [{ "text": "Inline link", "type": "text" }]
+        "children": [
+          {
+            "text": "Inline link",
+            "type": "text"
+          }
+        ]
       },
       {
         "bold": true,
@@ -108,20 +210,40 @@
   },
   {
     "type": "paragraph",
-    "children": [{ "code": true, "text": "Code string", "type": "text" }]
+    "children": [
+      {
+        "code": true,
+        "text": "Code string",
+        "type": "text"
+      }
+    ]
   },
   {
     "type": "code",
     "children": [
-      { "text": "Code block", "type": "text" },
+      {
+        "text": "Code block",
+        "type": "text"
+      },
       {
         "type": "link",
         "url": "https://google.com",
-        "children": [{ "text": "link", "type": "text" }]
+        "children": [
+          {
+            "text": "link",
+            "type": "text"
+          }
+        ]
       },
       {
         "type": "paragraph",
-        "children": [{ "code": true, "text": "Code string", "type": "text" }]
+        "children": [
+          {
+            "code": true,
+            "text": "Code string",
+            "type": "text"
+          }
+        ]
       }
     ]
   },
@@ -131,19 +253,39 @@
     "children": [
       {
         "type": "list-item",
-        "children": [{ "text": "Ordered list 1", "type": "text" }]
+        "children": [
+          {
+            "text": "Ordered list 1",
+            "type": "text"
+          }
+        ]
       },
       {
         "type": "list-item",
-        "children": [{ "text": "Ordered list 2", "type": "text" }]
+        "children": [
+          {
+            "text": "Ordered list 2",
+            "type": "text"
+          }
+        ]
       },
       {
         "type": "list-item",
-        "children": [{ "text": "Ordered list 3", "type": "text" }]
+        "children": [
+          {
+            "text": "Ordered list 3",
+            "type": "text"
+          }
+        ]
       },
       {
         "type": "list-item",
-        "children": [{ "text": "Ordered list 4", "type": "text" }]
+        "children": [
+          {
+            "text": "Ordered list 4",
+            "type": "text"
+          }
+        ]
       }
     ]
   },
@@ -153,25 +295,50 @@
     "children": [
       {
         "type": "list-item",
-        "children": [{ "text": "Unordered list 1", "type": "text" }]
+        "children": [
+          {
+            "text": "Unordered list 1",
+            "type": "text"
+          }
+        ]
       },
       {
         "type": "list-item",
-        "children": [{ "text": "Unordered list 2", "type": "text" }]
+        "children": [
+          {
+            "text": "Unordered list 2",
+            "type": "text"
+          }
+        ]
       },
       {
         "type": "list-item",
-        "children": [{ "text": "Unordered list 3", "type": "text" }]
+        "children": [
+          {
+            "text": "Unordered list 3",
+            "type": "text"
+          }
+        ]
       },
       {
         "type": "list-item",
-        "children": [{ "text": "Unordered list 4", "type": "text" }]
+        "children": [
+          {
+            "text": "Unordered list 4",
+            "type": "text"
+          }
+        ]
       }
     ]
   },
   {
     "type": "quote",
-    "children": [{ "text": "Quote", "type": "text" }]
+    "children": [
+      {
+        "text": "Quote",
+        "type": "text"
+      }
+    ]
   },
   {
     "type": "image",
@@ -184,16 +351,70 @@
       "size": 133.73,
       "width": 1920,
       "height": 1119,
-      "caption": null,
-      "formats": null,
-      "provider": null,
+      "caption": "Fireworks celebration image",
+      "formats": {
+        "thumbnail": {
+          "url": "https://cdn.pixabay.com/photo/2016/12/03/15/44/fireworks-1880045_150_150.jpg",
+          "width": 150,
+          "height": 150
+        },
+        "small": {
+          "url": "https://cdn.pixabay.com/photo/2016/12/03/15/44/fireworks-1880045_500_300.jpg",
+          "width": 500,
+          "height": 300
+        }
+      },
+      "provider": "cloudinary",
       "createdAt": "2023-10-06T12:11:14.159Z",
       "updatedAt": "2023-10-06T12:11:14.159Z",
-      "previewUrl": null,
+      "previewUrl": "https://cdn.pixabay.com/photo/2016/12/03/15/44/fireworks-1880045_preview.jpg",
       "alternativeText": "Alternative text",
+      "provider_metadata": {
+        "public_id": "fireworks-1880045",
+        "resource_type": "image"
+      }
+    },
+    "children": [
+      {
+        "text": "",
+        "type": "text"
+      }
+    ]
+  },
+  {
+    "type": "image",
+    "image": {
+      "ext": ".png",
+      "url": "https://example.com/image-no-alt.png",
+      "hash": "image_no_alt_abc123",
+      "mime": "image/png",
+      "name": "image-no-alt.png",
+      "size": 50.5,
+      "width": 800,
+      "height": 600,
+      "caption": null,
+      "formats": null,
+      "provider": "local",
+      "createdAt": "2024-01-15T10:00:00.000Z",
+      "updatedAt": "2024-01-15T10:00:00.000Z",
+      "previewUrl": null,
+      "alternativeText": null,
       "provider_metadata": null
     },
-    "children": [{ "text": "", "type": "text" }]
+    "children": [
+      {
+        "text": "",
+        "type": "text"
+      }
+    ]
   },
-  { "type": "paragraph", "children": [{ "text": "", "type": "text" }] }
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "text": "",
+        "type": "text"
+      }
+    ]
+  }
 ]

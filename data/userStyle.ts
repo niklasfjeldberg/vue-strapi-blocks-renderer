@@ -1,6 +1,6 @@
-import { h } from 'vue';
+import { h } from 'vue'
 
-import type { BlocksComponents, ModifiersComponents } from '../lib/types';
+import type { BlocksComponents, ModifiersComponents } from '../lib/types'
 
 export const modifiers: ModifiersComponents = {
   bold: (props) => h('strong', {}, props.children),
@@ -18,7 +18,7 @@ export const modifiers: ModifiersComponents = {
         props.children,
       ),
     ]),
-};
+}
 
 export const blocks: BlocksComponents = {
   'paragraph': (props) => h('p', { class: 'mb-4' }, props.children),
@@ -35,17 +35,17 @@ export const blocks: BlocksComponents = {
   'heading': ({ level, children }) => {
     switch (level) {
       case 1:
-        return h('h1', { class: 'text-8xl' }, children);
+        return h('h1', { class: 'text-8xl' }, children)
       case 2:
-        return h('h2', { class: 'text-6xl' }, children);
+        return h('h2', { class: 'text-6xl' }, children)
       case 3:
-        return h('h3', { class: 'text-4xl' }, children);
+        return h('h3', { class: 'text-4xl' }, children)
       case 4:
-        return h('h4', { class: 'text-2xl' }, children);
+        return h('h4', { class: 'text-2xl' }, children)
       case 5:
-        return h('h5', { class: 'text-xl' }, children);
+        return h('h5', { class: 'text-xl' }, children)
       case 6:
-        return h('h6', { class: 'text-lg' }, children);
+        return h('h6', { class: 'text-lg' }, children)
     }
   },
   'link': (props) =>
@@ -55,12 +55,12 @@ export const blocks: BlocksComponents = {
       props.children,
     ),
   'list': (props) => {
-    const isUl = props.format === 'ordered';
+    const isUl = props.format === 'ordered'
     return h(
       isUl ? 'ol' : 'ul',
       { class: `${isUl ? 'list-decimal' : 'list-disc'} ml-6` },
       props.children,
-    );
+    )
   },
 
   'list-item': (props) => h('li', { class: '' }, props.children),
@@ -70,4 +70,4 @@ export const blocks: BlocksComponents = {
       alt: props.image.alternativeText || undefined,
       class: '',
     }),
-};
+}

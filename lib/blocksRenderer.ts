@@ -1,14 +1,18 @@
-import { h, Fragment, Comment } from 'vue';
+import { h, Fragment, Comment } from 'vue'
 
-import { Block } from './block';
+import { Block } from './block'
 
 import type {
   ComponentsContextValue,
   BlocksRendererProps,
   BlocksComponents,
   ModifiersComponents,
-} from './types';
+} from './types'
 
+/**
+ * Default components used for rendering Strapi blocks.
+ * Can be extended or overridden by passing custom components to BlocksRenderer.
+ */
 export const defaultComponents: ComponentsContextValue = {
   blocks: {
     'paragraph': (props) => h('p', {}, props.children),
@@ -17,23 +21,32 @@ export const defaultComponents: ComponentsContextValue = {
     'heading': ({ level, children }) => {
       switch (level) {
         case 1:
-          return h('h1', {}, children);
+          return h('h1', {}, children)
         case 2:
-          return h('h2', {}, children);
+          return h('h2', {}, children)
         case 3:
-          return h('h3', {}, children);
+          return h('h3', {}, children)
         case 4:
-          return h('h4', {}, children);
+          return h('h4', {}, children)
         case 5:
-          return h('h5', {}, children);
+          return h('h5', {}, children)
         case 6:
-          return h('h6', {}, children);
+          return h('h6', {}, children)
       }
     },
-    'link': (props) => h('a', { href: props.url, target: props.target || undefined, rel: props.rel || undefined }, props.children),
+    'link': (props) =>
+      h(
+        'a',
+        {
+          href: props.url,
+          target: props.target || undefined,
+          rel: props.rel || undefined,
+        },
+        props.children,
+      ),
     'list': (props) => {
-      const isUl = props.format === 'ordered';
-      return h(isUl ? 'ol' : 'ul', {}, props.children);
+      const isUl = props.format === 'ordered'
+      return h(isUl ? 'ol' : 'ul', {}, props.children)
     },
 
     'list-item': (props) => h('li', {}, props.children),
@@ -52,38 +65,54 @@ export const defaultComponents: ComponentsContextValue = {
   },
   missingBlockTypes: [],
   missingModifierTypes: [],
-};
+}
 
+/**
+ * Vue component that renders Strapi Blocks content.
+ *
+ * @param props - The component props
+ * @param props.content - Array of Strapi block nodes to render
+ * @param props.blocks - Optional custom block components to override defaults
+ * @param props.modifiers - Optional custom modifier components to override defaults
+ * @returns VNode tree representing the rendered content
+ *
+ * @example
+ * ```vue
+ * <template>
+ *   <StrapiBlocks :content="article.content" />
+ * </template>
+ * ```
+ */
 export const BlocksRenderer = (props: BlocksRendererProps) => {
   // Merge default blocks with the ones provided by the user
   const blocks: BlocksComponents = {
     ...defaultComponents.blocks,
     ...props.blocks,
-  };
+  }
 
   // Merge default modifiers with the ones provided by the user
   const modifiers: ModifiersComponents = {
     ...defaultComponents.modifiers,
     ...props.modifiers,
-  };
+  }
 
   const componentsContext: ComponentsContextValue = {
     blocks,
     modifiers,
     missingBlockTypes: [],
     missingModifierTypes: [],
-  };
+  }
 
-  if (!props.content) throw new Error('BlocksRenderer content is empty');
+  if (!props.content) throw new Error('BlocksRenderer content is empty')
 
   const divs = props.content.map((content) =>
     Block({ content, componentsContext }),
-  );
+  )
 
   if (componentsContext.missingBlockTypes.length)
     divs.unshift(
       h(Comment, `missingBlockTypes: ${componentsContext.missingBlockTypes}`),
-    );
+    )
 
   if (componentsContext.missingModifierTypes.length)
     divs.unshift(
@@ -91,7 +120,7 @@ export const BlocksRenderer = (props: BlocksRendererProps) => {
         Comment,
         `missingModifierTypes: ${componentsContext.missingModifierTypes}`,
       ),
-    );
+    )
 
-  return h(Fragment, divs);
-};
+  return h(Fragment, divs)
+}
