@@ -10,21 +10,25 @@ import { mount, config } from '@vue/test-utils'
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
 import { defineComponent, h } from 'vue'
 
-// Import from the built dist folder instead of source
+// Import runtime values from the built dist folder
 import {
   StrapiBlocks,
   BlocksRenderer,
   useStrapiBlocksContext,
   contextKey,
-  type BlocksContent,
-  type BlocksComponents,
-  type ModifiersComponents,
-  type BlockChildren,
-  type RootNode,
-  type ModifierChildrenProps,
-  type BlocksRendererProps,
 } from '../dist/vue-strapi-blocks-renderer.mjs'
-import data from '../data/data.json'
+
+// Import types from source (types are compile-time only, don't affect runtime testing)
+import type {
+  BlocksContent,
+  BlocksComponents,
+  ModifiersComponents,
+  BlockChildren,
+  RootNode,
+  ModifierChildrenProps,
+  BlocksRendererProps,
+} from '../lib'
+
 import dataError from '../data/data-with-error.json'
 
 // Suppress Vue warnings during tests
@@ -63,99 +67,351 @@ describe('dist exports', () => {
 })
 
 describe('dist render blocks', () => {
-  const blocks = mount(StrapiBlocks, {
-    props: {
-      content: data as BlocksContent,
-    },
-  })
-
-  it('h1', () => {
-    expect(blocks.html()).toContain('<h1>Header 1</h1>')
-  })
-  it('h2', () => {
-    expect(blocks.html()).toContain('<h2>Header 2</h2>')
-  })
-  it('h3', () => {
-    expect(blocks.html()).toContain('<h3>Header 3</h3>')
-  })
-  it('h4', () => {
-    expect(blocks.html()).toContain('<h4>Header 4</h4>')
-  })
-  it('h5', () => {
-    expect(blocks.html()).toContain('<h5>Header 5</h5>')
-  })
-  it('h6', () => {
-    expect(blocks.html()).toContain('<h6>Header 6</h6>')
-  })
-  it('p', () => {
-    expect(blocks.html()).toContain('<p>Normal text.</p>')
-  })
-  it('p > strong', () => {
-    expect(blocks.html()).toContain('<p><strong>Bold text</strong></p>')
-  })
-  it('p > em', () => {
-    expect(blocks.html()).toContain('<p><em>Italic text</em></p>')
-  })
-  it('p > u', () => {
-    expect(blocks.html()).toContain('<p><u>Underlined text</u></p>')
-  })
-  it('p > del > u > em > strong', () => {
-    expect(blocks.html()).toContain(
-      '<p><del><u><em><strong>Bold, italic, underlined, and strikethorugh text</strong></em></u></del></p>',
-    )
-  })
-  it('a', () => {
-    expect(blocks.html()).toContain(
-      '<a href="https://google.com">Root link</a>',
-    )
-  })
-  it('a with target and rel', () => {
-    expect(blocks.html()).toContain(
-      '<a href="https://external.com" target="_blank" rel="noopener noreferrer">External link with target and rel</a>',
-    )
-  })
-  it('p > a', () => {
-    expect(blocks.html()).toContain(
-      '<p><a href="https://google.com">Inline link</a><del><u><em><strong></strong></em></u></del></p>',
-    )
-  })
-  it('p > code', () => {
-    expect(blocks.html()).toContain('<p><code>Code string</code></p>')
-  })
-  it('pre > code', () => {
-    expect(blocks.html()).toContain('<pre><code>Code blocklink</code></pre>')
-  })
-  it('ol', () => {
-    expect(blocks.html()).toContain('<ol>')
-    expect(blocks.html()).toContain('<li>Ordered list 1</li>')
-  })
-  it('ul', () => {
-    expect(blocks.html()).toContain('<ul>')
-    expect(blocks.html()).toContain('<li>Unordered list 1</li>')
-  })
-  it('blockquote', () => {
-    expect(blocks.html()).toContain('<blockquote>Quote</blockquote>')
-  })
-  it('img', () => {
-    expect(blocks.html()).toContain(
-      '<img src="https://cdn.pixabay.com/photo/2016/12/03/15/44/fireworks-1880045_960_720.jpg" alt="Alternative text">',
-    )
-  })
-  it('img without alt', () => {
-    expect(blocks.html()).toContain(
-      '<img src="https://example.com/image-no-alt.png">',
-    )
-  })
-  it('p with false modifiers renders text only', () => {
-    expect(blocks.html()).toContain('<p>Text with false modifiers</p>')
-  })
-
-  it('empty p => br', () => {
-    const dataWithBreak: BlocksContent = [
-      { type: 'paragraph', children: [{ text: '', type: 'text' }] },
+  it('h1 renders as h1 element with correct text', () => {
+    const content: BlocksContent = [
+      { type: 'heading', level: 1, children: [{ type: 'text', text: 'Header 1' }] },
     ]
-    const wrapper = mount(StrapiBlocks, { props: { content: dataWithBreak } })
-    expect(wrapper.html()).toContain('<br>')
+    const wrapper = mount(StrapiBlocks, { props: { content } })
+    const h1 = wrapper.find('h1')
+    expect(h1.exists()).toBe(true)
+    expect(h1.text()).toBe('Header 1')
+    expect(wrapper.findAll('h2, h3, h4, h5, h6').length).toBe(0)
+  })
+
+  it('h2 renders as h2 element with correct text', () => {
+    const content: BlocksContent = [
+      { type: 'heading', level: 2, children: [{ type: 'text', text: 'Header 2' }] },
+    ]
+    const wrapper = mount(StrapiBlocks, { props: { content } })
+    const h2 = wrapper.find('h2')
+    expect(h2.exists()).toBe(true)
+    expect(h2.text()).toBe('Header 2')
+    expect(wrapper.findAll('h1, h3, h4, h5, h6').length).toBe(0)
+  })
+
+  it('h3 renders as h3 element with correct text', () => {
+    const content: BlocksContent = [
+      { type: 'heading', level: 3, children: [{ type: 'text', text: 'Header 3' }] },
+    ]
+    const wrapper = mount(StrapiBlocks, { props: { content } })
+    const h3 = wrapper.find('h3')
+    expect(h3.exists()).toBe(true)
+    expect(h3.text()).toBe('Header 3')
+  })
+
+  it('h4 renders as h4 element with correct text', () => {
+    const content: BlocksContent = [
+      { type: 'heading', level: 4, children: [{ type: 'text', text: 'Header 4' }] },
+    ]
+    const wrapper = mount(StrapiBlocks, { props: { content } })
+    const h4 = wrapper.find('h4')
+    expect(h4.exists()).toBe(true)
+    expect(h4.text()).toBe('Header 4')
+  })
+
+  it('h5 renders as h5 element with correct text', () => {
+    const content: BlocksContent = [
+      { type: 'heading', level: 5, children: [{ type: 'text', text: 'Header 5' }] },
+    ]
+    const wrapper = mount(StrapiBlocks, { props: { content } })
+    const h5 = wrapper.find('h5')
+    expect(h5.exists()).toBe(true)
+    expect(h5.text()).toBe('Header 5')
+  })
+
+  it('h6 renders as h6 element with correct text', () => {
+    const content: BlocksContent = [
+      { type: 'heading', level: 6, children: [{ type: 'text', text: 'Header 6' }] },
+    ]
+    const wrapper = mount(StrapiBlocks, { props: { content } })
+    const h6 = wrapper.find('h6')
+    expect(h6.exists()).toBe(true)
+    expect(h6.text()).toBe('Header 6')
+  })
+
+  it('paragraph renders as p element with correct text', () => {
+    const content: BlocksContent = [
+      { type: 'paragraph', children: [{ type: 'text', text: 'Normal text.' }] },
+    ]
+    const wrapper = mount(StrapiBlocks, { props: { content } })
+    const p = wrapper.find('p')
+    expect(p.exists()).toBe(true)
+    expect(p.text()).toBe('Normal text.')
+  })
+
+  it('bold text renders strong inside p', () => {
+    const content: BlocksContent = [
+      { type: 'paragraph', children: [{ type: 'text', text: 'Bold text', bold: true }] },
+    ]
+    const wrapper = mount(StrapiBlocks, { props: { content } })
+    const p = wrapper.find('p')
+    const strong = p.find('strong')
+    expect(strong.exists()).toBe(true)
+    expect(strong.text()).toBe('Bold text')
+  })
+
+  it('italic text renders em inside p', () => {
+    const content: BlocksContent = [
+      { type: 'paragraph', children: [{ type: 'text', text: 'Italic text', italic: true }] },
+    ]
+    const wrapper = mount(StrapiBlocks, { props: { content } })
+    const p = wrapper.find('p')
+    const em = p.find('em')
+    expect(em.exists()).toBe(true)
+    expect(em.text()).toBe('Italic text')
+  })
+
+  it('underlined text renders u inside p', () => {
+    const content: BlocksContent = [
+      { type: 'paragraph', children: [{ type: 'text', text: 'Underlined text', underline: true }] },
+    ]
+    const wrapper = mount(StrapiBlocks, { props: { content } })
+    const p = wrapper.find('p')
+    const u = p.find('u')
+    expect(u.exists()).toBe(true)
+    expect(u.text()).toBe('Underlined text')
+  })
+
+  it('strikethrough text renders del inside p', () => {
+    const content: BlocksContent = [
+      { type: 'paragraph', children: [{ type: 'text', text: 'Deleted text', strikethrough: true }] },
+    ]
+    const wrapper = mount(StrapiBlocks, { props: { content } })
+    const p = wrapper.find('p')
+    const del = p.find('del')
+    expect(del.exists()).toBe(true)
+    expect(del.text()).toBe('Deleted text')
+  })
+
+  it('combined modifiers nest correctly: del > u > em > strong', () => {
+    const content: BlocksContent = [
+      {
+        type: 'paragraph',
+        children: [{
+          type: 'text',
+          text: 'All modifiers',
+          bold: true,
+          italic: true,
+          underline: true,
+          strikethrough: true,
+        }],
+      },
+    ]
+    const wrapper = mount(StrapiBlocks, { props: { content } })
+    const p = wrapper.find('p')
+    const del = p.find('del')
+    const u = del.find('u')
+    const em = u.find('em')
+    const strong = em.find('strong')
+    expect(del.exists()).toBe(true)
+    expect(u.exists()).toBe(true)
+    expect(em.exists()).toBe(true)
+    expect(strong.exists()).toBe(true)
+    expect(strong.text()).toBe('All modifiers')
+  })
+
+  it('link renders as a element with correct href and text', () => {
+    const content: BlocksContent = [
+      {
+        type: 'paragraph',
+        children: [{
+          type: 'link',
+          url: 'https://google.com',
+          children: [{ type: 'text', text: 'Link text' }],
+        }],
+      },
+    ]
+    const wrapper = mount(StrapiBlocks, { props: { content } })
+    const a = wrapper.find('a')
+    expect(a.exists()).toBe(true)
+    expect(a.attributes('href')).toBe('https://google.com')
+    expect(a.text()).toBe('Link text')
+  })
+
+  it('link with target and rel renders all attributes correctly', () => {
+    const content: BlocksContent = [
+      {
+        type: 'paragraph',
+        children: [{
+          type: 'link',
+          url: 'https://external.com',
+          target: '_blank',
+          rel: 'noopener noreferrer',
+          children: [{ type: 'text', text: 'External link' }],
+        }],
+      },
+    ]
+    const wrapper = mount(StrapiBlocks, { props: { content } })
+    const a = wrapper.find('a')
+    expect(a.attributes('href')).toBe('https://external.com')
+    expect(a.attributes('target')).toBe('_blank')
+    expect(a.attributes('rel')).toBe('noopener noreferrer')
+  })
+
+  it('inline code renders code element inside p', () => {
+    const content: BlocksContent = [
+      { type: 'paragraph', children: [{ type: 'text', text: 'Code string', code: true }] },
+    ]
+    const wrapper = mount(StrapiBlocks, { props: { content } })
+    const p = wrapper.find('p')
+    const code = p.find('code')
+    expect(code.exists()).toBe(true)
+    expect(code.text()).toBe('Code string')
+  })
+
+  it('code block renders pre > code structure', () => {
+    const content: BlocksContent = [
+      { type: 'code', children: [{ type: 'text', text: 'Code block content' }] },
+    ]
+    const wrapper = mount(StrapiBlocks, { props: { content } })
+    const pre = wrapper.find('pre')
+    expect(pre.exists()).toBe(true)
+    const code = pre.find('code')
+    expect(code.exists()).toBe(true)
+    expect(code.text()).toBe('Code block content')
+  })
+
+  it('ordered list renders ol with li children', () => {
+    const content: BlocksContent = [
+      {
+        type: 'list',
+        format: 'ordered',
+        children: [
+          { type: 'list-item', children: [{ type: 'text', text: 'Item 1' }] },
+          { type: 'list-item', children: [{ type: 'text', text: 'Item 2' }] },
+        ],
+      },
+    ]
+    const wrapper = mount(StrapiBlocks, { props: { content } })
+    const ol = wrapper.find('ol')
+    expect(ol.exists()).toBe(true)
+    expect(wrapper.find('ul').exists()).toBe(false)
+    const items = ol.findAll('li')
+    expect(items.length).toBe(2)
+    expect(items[0]!.text()).toBe('Item 1')
+    expect(items[1]!.text()).toBe('Item 2')
+  })
+
+  it('unordered list renders ul with li children', () => {
+    const content: BlocksContent = [
+      {
+        type: 'list',
+        format: 'unordered',
+        children: [
+          { type: 'list-item', children: [{ type: 'text', text: 'Item A' }] },
+          { type: 'list-item', children: [{ type: 'text', text: 'Item B' }] },
+        ],
+      },
+    ]
+    const wrapper = mount(StrapiBlocks, { props: { content } })
+    const ul = wrapper.find('ul')
+    expect(ul.exists()).toBe(true)
+    expect(wrapper.find('ol').exists()).toBe(false)
+    const items = ul.findAll('li')
+    expect(items.length).toBe(2)
+    expect(items[0]!.text()).toBe('Item A')
+    expect(items[1]!.text()).toBe('Item B')
+  })
+
+  it('quote renders as blockquote element', () => {
+    const content: BlocksContent = [
+      { type: 'quote', children: [{ type: 'text', text: 'Quote text' }] },
+    ]
+    const wrapper = mount(StrapiBlocks, { props: { content } })
+    const blockquote = wrapper.find('blockquote')
+    expect(blockquote.exists()).toBe(true)
+    expect(blockquote.text()).toBe('Quote text')
+  })
+
+  it('image renders as img with correct src and alt', () => {
+    const content: BlocksContent = [
+      {
+        type: 'image',
+        image: {
+          url: 'https://example.com/image.jpg',
+          alternativeText: 'Alt text',
+          name: 'image.jpg',
+          width: 100,
+          height: 100,
+          hash: 'abc',
+          ext: '.jpg',
+          mime: 'image/jpeg',
+          size: 1000,
+          provider: 'local',
+          createdAt: '2024-01-01',
+          updatedAt: '2024-01-01',
+        },
+        children: [{ type: 'text', text: '' }],
+      },
+    ]
+    const wrapper = mount(StrapiBlocks, { props: { content } })
+    const img = wrapper.find('img')
+    expect(img.exists()).toBe(true)
+    expect(img.attributes('src')).toBe('https://example.com/image.jpg')
+    expect(img.attributes('alt')).toBe('Alt text')
+  })
+
+  it('image without alt does not have alt attribute', () => {
+    const content: BlocksContent = [
+      {
+        type: 'image',
+        image: {
+          url: 'https://example.com/noalt.jpg',
+          name: 'noalt.jpg',
+          width: 100,
+          height: 100,
+          hash: 'abc',
+          ext: '.jpg',
+          mime: 'image/jpeg',
+          size: 1000,
+          provider: 'local',
+          createdAt: '2024-01-01',
+          updatedAt: '2024-01-01',
+        },
+        children: [{ type: 'text', text: '' }],
+      },
+    ]
+    const wrapper = mount(StrapiBlocks, { props: { content } })
+    const img = wrapper.find('img')
+    expect(img.exists()).toBe(true)
+    expect(img.attributes('src')).toBe('https://example.com/noalt.jpg')
+    expect(img.attributes('alt')).toBeUndefined()
+  })
+
+  it('false modifiers do not render modifier elements', () => {
+    const content: BlocksContent = [
+      {
+        type: 'paragraph',
+        children: [{
+          type: 'text',
+          text: 'Plain text',
+          bold: false,
+          italic: false,
+          underline: false,
+          strikethrough: false,
+          code: false,
+        }],
+      },
+    ]
+    const wrapper = mount(StrapiBlocks, { props: { content } })
+    const p = wrapper.find('p')
+    expect(p.text()).toBe('Plain text')
+    expect(p.find('strong').exists()).toBe(false)
+    expect(p.find('em').exists()).toBe(false)
+    expect(p.find('u').exists()).toBe(false)
+    expect(p.find('del').exists()).toBe(false)
+    expect(p.find('code').exists()).toBe(false)
+  })
+
+  it('empty paragraph renders as br element (not wrapped in p)', () => {
+    const content: BlocksContent = [
+      { type: 'paragraph', children: [{ type: 'text', text: '' }] },
+    ]
+    const wrapper = mount(StrapiBlocks, { props: { content } })
+    // Empty paragraph renders directly as <br>, not <p><br></p>
+    const br = wrapper.find('br')
+    expect(br.exists()).toBe(true)
+    expect(wrapper.find('p').exists()).toBe(false)
   })
 
   it('renders line breaks in text', () => {
@@ -259,89 +515,216 @@ describe('dist error handling', () => {
 })
 
 describe('dist custom components and modifiers', () => {
-  const customBlocks = mount(StrapiBlocks, {
-    props: {
-      content: data as BlocksContent,
-      blocks: {
-        paragraph: (props) => h('p', { class: 'custom-paragraph' }, props.children),
-      },
-      modifiers: {
-        code: (props) => h('code', { class: 'custom-code' }, props.children),
-      },
-    },
-  })
-
-  it('renders custom block component', () => {
-    expect(customBlocks.html()).toContain('class="custom-paragraph"')
-  })
-
-  it('renders custom modifier component', () => {
-    expect(customBlocks.html()).toContain('class="custom-code"')
-  })
-
-  it('supports all custom block types', () => {
-    const customContent: BlocksContent = [
-      { type: 'paragraph', children: [{ type: 'text', text: 'Para' }] },
-      { type: 'heading', level: 2, children: [{ type: 'text', text: 'Head' }] },
-      { type: 'quote', children: [{ type: 'text', text: 'Quote' }] },
-      { type: 'code', children: [{ type: 'text', text: 'Code' }] },
-      { type: 'list', format: 'unordered', children: [{ type: 'list-item', children: [{ type: 'text', text: 'Item' }] }] },
+  it('renders custom block component with correct class', () => {
+    const content: BlocksContent = [
+      { type: 'paragraph', children: [{ type: 'text', text: 'Test' }] },
     ]
-
     const wrapper = mount(StrapiBlocks, {
       props: {
-        content: customContent,
+        content,
+        blocks: {
+          paragraph: (props) => h('p', { class: 'custom-paragraph' }, props.children),
+        },
+      },
+    })
+    const p = wrapper.find('p.custom-paragraph')
+    expect(p.exists()).toBe(true)
+    expect(p.text()).toBe('Test')
+  })
+
+  it('renders custom modifier component with correct class', () => {
+    const content: BlocksContent = [
+      { type: 'paragraph', children: [{ type: 'text', text: 'Code', code: true }] },
+    ]
+    const wrapper = mount(StrapiBlocks, {
+      props: {
+        content,
+        modifiers: {
+          code: (props) => h('code', { class: 'custom-code' }, props.children),
+        },
+      },
+    })
+    const code = wrapper.find('code.custom-code')
+    expect(code.exists()).toBe(true)
+    expect(code.text()).toBe('Code')
+  })
+
+  it('custom paragraph replaces default paragraph', () => {
+    const content: BlocksContent = [
+      { type: 'paragraph', children: [{ type: 'text', text: 'Para' }] },
+    ]
+    const wrapper = mount(StrapiBlocks, {
+      props: {
+        content,
         blocks: {
           paragraph: (props) => h('div', { 'data-block': 'paragraph' }, props.children),
+        },
+      },
+    })
+    const customPara = wrapper.find('[data-block="paragraph"]')
+    expect(customPara.exists()).toBe(true)
+    expect(customPara.element.tagName).toBe('DIV')
+    expect(customPara.text()).toBe('Para')
+  })
+
+  it('custom heading receives level prop correctly', () => {
+    const content: BlocksContent = [
+      { type: 'heading', level: 2, children: [{ type: 'text', text: 'Head' }] },
+    ]
+    const wrapper = mount(StrapiBlocks, {
+      props: {
+        content,
+        blocks: {
           heading: (props) => h('div', { 'data-block': 'heading', 'data-level': props.level }, props.children),
+        },
+      },
+    })
+    const customHeading = wrapper.find('[data-block="heading"]')
+    expect(customHeading.exists()).toBe(true)
+    expect(customHeading.attributes('data-level')).toBe('2')
+    expect(customHeading.text()).toBe('Head')
+  })
+
+  it('custom quote replaces default blockquote', () => {
+    const content: BlocksContent = [
+      { type: 'quote', children: [{ type: 'text', text: 'Quote' }] },
+    ]
+    const wrapper = mount(StrapiBlocks, {
+      props: {
+        content,
+        blocks: {
           quote: (props) => h('div', { 'data-block': 'quote' }, props.children),
+        },
+      },
+    })
+    const customQuote = wrapper.find('[data-block="quote"]')
+    expect(customQuote.exists()).toBe(true)
+    expect(wrapper.find('blockquote').exists()).toBe(false)
+    expect(customQuote.text()).toBe('Quote')
+  })
+
+  it('custom code block replaces default pre>code', () => {
+    const content: BlocksContent = [
+      { type: 'code', children: [{ type: 'text', text: 'Code' }] },
+    ]
+    const wrapper = mount(StrapiBlocks, {
+      props: {
+        content,
+        blocks: {
           code: (props) => h('div', { 'data-block': 'code' }, props.children),
+        },
+      },
+    })
+    const customCode = wrapper.find('[data-block="code"]')
+    expect(customCode.exists()).toBe(true)
+    expect(wrapper.find('pre').exists()).toBe(false)
+    expect(customCode.text()).toBe('Code')
+  })
+
+  it('custom list receives format prop correctly', () => {
+    const content: BlocksContent = [
+      { type: 'list', format: 'unordered', children: [{ type: 'list-item', children: [{ type: 'text', text: 'Item' }] }] },
+    ]
+    const wrapper = mount(StrapiBlocks, {
+      props: {
+        content,
+        blocks: {
           list: (props) => h('div', { 'data-block': 'list', 'data-format': props.format }, props.children),
         },
       },
     })
-
-    expect(wrapper.html()).toContain('data-block="paragraph"')
-    expect(wrapper.html()).toContain('data-block="heading"')
-    expect(wrapper.html()).toContain('data-level="2"')
-    expect(wrapper.html()).toContain('data-block="quote"')
-    expect(wrapper.html()).toContain('data-block="code"')
-    expect(wrapper.html()).toContain('data-block="list"')
-    expect(wrapper.html()).toContain('data-format="unordered"')
+    const customList = wrapper.find('[data-block="list"]')
+    expect(customList.exists()).toBe(true)
+    expect(customList.attributes('data-format')).toBe('unordered')
   })
 
-  it('supports all custom modifier types', () => {
-    const customContent: BlocksContent = [
-      {
-        type: 'paragraph',
-        children: [
-          { type: 'text', text: 'Bold', bold: true },
-          { type: 'text', text: 'Italic', italic: true },
-          { type: 'text', text: 'Underline', underline: true },
-          { type: 'text', text: 'Strike', strikethrough: true },
-          { type: 'text', text: 'Code', code: true },
-        ],
-      },
+  it('custom bold modifier replaces default strong', () => {
+    const content: BlocksContent = [
+      { type: 'paragraph', children: [{ type: 'text', text: 'Bold', bold: true }] },
     ]
-
     const wrapper = mount(StrapiBlocks, {
       props: {
-        content: customContent,
+        content,
         modifiers: {
           bold: (props) => h('span', { 'data-mod': 'bold' }, props.children),
+        },
+      },
+    })
+    const customBold = wrapper.find('[data-mod="bold"]')
+    expect(customBold.exists()).toBe(true)
+    expect(wrapper.find('strong').exists()).toBe(false)
+    expect(customBold.text()).toBe('Bold')
+  })
+
+  it('custom italic modifier replaces default em', () => {
+    const content: BlocksContent = [
+      { type: 'paragraph', children: [{ type: 'text', text: 'Italic', italic: true }] },
+    ]
+    const wrapper = mount(StrapiBlocks, {
+      props: {
+        content,
+        modifiers: {
           italic: (props) => h('span', { 'data-mod': 'italic' }, props.children),
+        },
+      },
+    })
+    const customItalic = wrapper.find('[data-mod="italic"]')
+    expect(customItalic.exists()).toBe(true)
+    expect(wrapper.find('em').exists()).toBe(false)
+    expect(customItalic.text()).toBe('Italic')
+  })
+
+  it('custom underline modifier replaces default u', () => {
+    const content: BlocksContent = [
+      { type: 'paragraph', children: [{ type: 'text', text: 'Underline', underline: true }] },
+    ]
+    const wrapper = mount(StrapiBlocks, {
+      props: {
+        content,
+        modifiers: {
           underline: (props) => h('span', { 'data-mod': 'underline' }, props.children),
+        },
+      },
+    })
+    const customUnderline = wrapper.find('[data-mod="underline"]')
+    expect(customUnderline.exists()).toBe(true)
+    expect(wrapper.find('u').exists()).toBe(false)
+    expect(customUnderline.text()).toBe('Underline')
+  })
+
+  it('custom strikethrough modifier replaces default del', () => {
+    const content: BlocksContent = [
+      { type: 'paragraph', children: [{ type: 'text', text: 'Strike', strikethrough: true }] },
+    ]
+    const wrapper = mount(StrapiBlocks, {
+      props: {
+        content,
+        modifiers: {
           strikethrough: (props) => h('span', { 'data-mod': 'strikethrough' }, props.children),
+        },
+      },
+    })
+    const customStrike = wrapper.find('[data-mod="strikethrough"]')
+    expect(customStrike.exists()).toBe(true)
+    expect(wrapper.find('del').exists()).toBe(false)
+    expect(customStrike.text()).toBe('Strike')
+  })
+
+  it('custom code modifier replaces default inline code', () => {
+    const content: BlocksContent = [
+      { type: 'paragraph', children: [{ type: 'text', text: 'Code', code: true }] },
+    ]
+    const wrapper = mount(StrapiBlocks, {
+      props: {
+        content,
+        modifiers: {
           code: (props) => h('span', { 'data-mod': 'code' }, props.children),
         },
       },
     })
-
-    expect(wrapper.html()).toContain('data-mod="bold"')
-    expect(wrapper.html()).toContain('data-mod="italic"')
-    expect(wrapper.html()).toContain('data-mod="underline"')
-    expect(wrapper.html()).toContain('data-mod="strikethrough"')
-    expect(wrapper.html()).toContain('data-mod="code"')
+    const customCode = wrapper.find('[data-mod="code"]')
+    expect(customCode.exists()).toBe(true)
+    expect(customCode.text()).toBe('Code')
   })
 })
 
@@ -459,7 +842,7 @@ describe('dist type exports', () => {
 })
 
 describe('dist nested list rendering', () => {
-  it('renders nested ordered lists', () => {
+  it('renders nested ordered lists with correct structure', () => {
     const nestedListContent: BlocksContent = [
       {
         type: 'list',
@@ -478,14 +861,27 @@ describe('dist nested list rendering', () => {
     ]
 
     const wrapper = mount(StrapiBlocks, { props: { content: nestedListContent } })
-    expect(wrapper.html()).toContain('<ol>')
-    expect(wrapper.html()).toContain('Level 1')
-    expect(wrapper.html()).toContain('Level 2')
-    // Should have nested ol elements
-    expect((wrapper.html().match(/<ol>/g) || []).length).toBe(2)
+    const topLevelOl = wrapper.find('ol')
+    expect(topLevelOl.exists()).toBe(true)
+
+    // First li should have "Level 1" text
+    const firstLi = topLevelOl.find('li')
+    expect(firstLi.exists()).toBe(true)
+    expect(firstLi.text()).toContain('Level 1')
+
+    // Should have a nested ol
+    const nestedOl = topLevelOl.find('ol ol')
+    expect(nestedOl.exists()).toBe(true)
+
+    // Nested ol should have "Level 2" in its li
+    const nestedLi = nestedOl.find('li')
+    expect(nestedLi.text()).toBe('Level 2')
+
+    // Should have exactly 2 ol elements total
+    expect(wrapper.findAll('ol').length).toBe(2)
   })
 
-  it('renders nested unordered lists', () => {
+  it('renders nested unordered lists with correct structure', () => {
     const nestedListContent: BlocksContent = [
       {
         type: 'list',
@@ -504,14 +900,47 @@ describe('dist nested list rendering', () => {
     ]
 
     const wrapper = mount(StrapiBlocks, { props: { content: nestedListContent } })
-    expect(wrapper.html()).toContain('<ul>')
-    expect(wrapper.html()).toContain('Item A')
-    expect(wrapper.html()).toContain('Item B')
+    const topLevelUl = wrapper.find('ul')
+    expect(topLevelUl.exists()).toBe(true)
+    expect(wrapper.find('ol').exists()).toBe(false)
+
+    const nestedUl = topLevelUl.find('ul ul')
+    expect(nestedUl.exists()).toBe(true)
+
+    const nestedLi = nestedUl.find('li')
+    expect(nestedLi.text()).toBe('Item B')
+  })
+
+  it('renders mixed nested lists (ordered inside unordered)', () => {
+    const mixedListContent: BlocksContent = [
+      {
+        type: 'list',
+        format: 'unordered',
+        children: [
+          { type: 'list-item', children: [{ type: 'text', text: 'Unordered' }] },
+          {
+            type: 'list',
+            format: 'ordered',
+            children: [
+              { type: 'list-item', children: [{ type: 'text', text: 'Ordered' }] },
+            ],
+          },
+        ],
+      },
+    ]
+
+    const wrapper = mount(StrapiBlocks, { props: { content: mixedListContent } })
+    const ul = wrapper.find('ul')
+    expect(ul.exists()).toBe(true)
+
+    const nestedOl = ul.find('ol')
+    expect(nestedOl.exists()).toBe(true)
+    expect(nestedOl.find('li').text()).toBe('Ordered')
   })
 })
 
 describe('dist link rendering', () => {
-  it('renders link with all attributes', () => {
+  it('renders link with all attributes in correct element', () => {
     const linkContent: BlocksContent = [
       {
         type: 'paragraph',
@@ -528,13 +957,18 @@ describe('dist link rendering', () => {
     ]
 
     const wrapper = mount(StrapiBlocks, { props: { content: linkContent } })
-    expect(wrapper.html()).toContain('href="https://example.com"')
-    expect(wrapper.html()).toContain('target="_blank"')
-    expect(wrapper.html()).toContain('rel="noopener"')
-    expect(wrapper.html()).toContain('Link text')
+    const p = wrapper.find('p')
+    expect(p.exists()).toBe(true)
+
+    const a = p.find('a')
+    expect(a.exists()).toBe(true)
+    expect(a.attributes('href')).toBe('https://example.com')
+    expect(a.attributes('target')).toBe('_blank')
+    expect(a.attributes('rel')).toBe('noopener')
+    expect(a.text()).toBe('Link text')
   })
 
-  it('renders link without optional attributes', () => {
+  it('renders link without optional attributes correctly', () => {
     const linkContent: BlocksContent = [
       {
         type: 'paragraph',
@@ -549,9 +983,57 @@ describe('dist link rendering', () => {
     ]
 
     const wrapper = mount(StrapiBlocks, { props: { content: linkContent } })
-    expect(wrapper.html()).toContain('href="https://simple.com"')
-    expect(wrapper.html()).toContain('Simple link')
-    expect(wrapper.html()).not.toContain('target=')
-    expect(wrapper.html()).not.toContain('rel=')
+    const a = wrapper.find('a')
+    expect(a.exists()).toBe(true)
+    expect(a.attributes('href')).toBe('https://simple.com')
+    expect(a.text()).toBe('Simple link')
+    expect(a.attributes('target')).toBeUndefined()
+    expect(a.attributes('rel')).toBeUndefined()
+  })
+
+  it('link is rendered inside paragraph, not as sibling', () => {
+    const linkContent: BlocksContent = [
+      {
+        type: 'paragraph',
+        children: [
+          { type: 'text', text: 'Before ' },
+          {
+            type: 'link',
+            url: 'https://test.com',
+            children: [{ type: 'text', text: 'link' }],
+          },
+          { type: 'text', text: ' after' },
+        ],
+      },
+    ]
+
+    const wrapper = mount(StrapiBlocks, { props: { content: linkContent } })
+    const p = wrapper.find('p')
+    const a = p.find('a')
+    expect(a.exists()).toBe(true)
+    expect(p.text()).toBe('Before link after')
+  })
+
+  it('link with styled text renders modifiers inside link', () => {
+    const linkContent: BlocksContent = [
+      {
+        type: 'paragraph',
+        children: [
+          {
+            type: 'link',
+            url: 'https://styled.com',
+            children: [{ type: 'text', text: 'Bold link', bold: true }],
+          },
+        ],
+      },
+    ]
+
+    const wrapper = mount(StrapiBlocks, { props: { content: linkContent } })
+    const a = wrapper.find('a')
+    expect(a.exists()).toBe(true)
+
+    const strong = a.find('strong')
+    expect(strong.exists()).toBe(true)
+    expect(strong.text()).toBe('Bold link')
   })
 })
