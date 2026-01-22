@@ -1,5 +1,27 @@
 # Changelog
 
+## v1.1.1
+
+[compare changes](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/compare/v1.1.0...v1.1.1)
+
+### 🩹 Fixes
+
+- **vite:** Ensure rollupTypes is set to true in dts plugin configuration ([558d281](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/558d281))
+
+### 🏡 Chore
+
+- **release:** V1.1.0 ([db013b8](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/db013b8))
+
+### ✅ Tests
+
+- Add unit tests for built package functionality ([a98a00b](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/a98a00b))
+- Enhance dist package tests with additional scenarios and error handling ([007612e](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/007612e))
+- Enhance dist package tests for rendering and modifiers ([d1f674c](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/commit/d1f674c))
+
+### ❤️ Contributors
+
+- Niklas Fjeldberg <github@fjeldberg.me>
+
 ## v1.1.0
 
 [compare changes](https://github.com/niklasfjeldberg/vue-strapi-blocks-renderer/compare/v0.2.2...v1.1.0)
